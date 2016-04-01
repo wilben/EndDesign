@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="5dp"
+    android:paddingTop="5dp" >
+
+    <ImageView
+        android:id="@+id/iv_avatar"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@mipmap/default_avatar"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@id/iv_avatar"
+        android:text="用户名"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_local"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_username"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/iv_avatar"
+        android:text="所在地："
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/tv_fg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_local"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="3dp"
+        android:layout_toRightOf="@id/iv_avatar"
+        android:text="风格："
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/tv_area"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="地域"
+        android:textSize="13sp"
+        android:layout_alignTop="@+id/tv_local"
+        android:layout_toRightOf="@+id/tv_local"
+        android:layout_toEndOf="@+id/tv_local" />
+
+    <TextView
+        android:id="@+id/tv_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="style"
+        android:textSize="13sp"
+        android:layout_alignTop="@+id/tv_fg"
+        android:layout_toRightOf="@+id/tv_fg"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>

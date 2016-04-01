@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CCCCCC"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:paddingBottom="1dp"
+        android:paddingTop="5dp">
+
+        <ImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="15dp"
+            android:background="@mipmap/default_avatar"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            android:layout_toRightOf="@id/iv_avatar"
+            android:text="用户名"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/tv_nianxian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="从业年限:"
+            android:textSize="15sp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginStart="45dp"
+            android:layout_alignBottom="@+id/iv_avatar"
+            android:layout_toRightOf="@+id/tv_username"
+            android:layout_toEndOf="@+id/tv_username" />
+
+        <TextView
+            android:id="@+id/tv_period"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:text="1"
+            android:textSize="15sp"
+            android:layout_alignBottom="@+id/iv_avatar"
+            android:layout_toRightOf="@+id/tv_nianxian"
+            android:layout_toEndOf="@+id/tv_nianxian" />
+        <TextView
+            android:id="@+id/tv_nian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:text="年"
+            android:textSize="15sp"
+            android:layout_alignBottom="@+id/iv_avatar"
+            android:layout_toRightOf="@+id/tv_period"
+            android:layout_toEndOf="@+id/tv_period" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="1dp"
+        android:background="#ffffff">
+
+
+        <TextView
+            android:id="@+id/tv_jianjie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="bottom|left"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/iv_avatar"
+            android:layout_marginBottom="1dp"
+            android:text="设计师简介"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="1dp"
+        android:orientation="vertical"
+        android:background="#ffffff">
+
+
+        <TextView
+            android:id="@+id/tv_linian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="15dp"
+            android:text="设计理念:"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/tv_concept"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="35dp"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_geyan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:text="人生格言:"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/tv_motto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="35dp"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_fengge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:text="擅长风格:"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/tv_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="35dp"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_zuopin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:text="作品:"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/tv_work"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="35dp"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_quyu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:text="服务区域:"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/tv_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="35dp"
+            android:textSize="15sp" />
+    </LinearLayout>
+</LinearLayout>
