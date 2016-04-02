@@ -8,7 +8,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:background="#ffffff"
         android:paddingBottom="1dp"
         android:paddingTop="5dp">
@@ -17,6 +17,7 @@
             android:id="@+id/iv_avatar"
             android:layout_width="80dp"
             android:layout_height="80dp"
+            android:layout_marginTop="7dp"
             android:layout_marginLeft="15dp"
             android:background="@mipmap/default_avatar"
             android:scaleType="centerCrop" />
@@ -48,7 +49,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
-            android:text="1"
             android:textSize="15sp"
             android:layout_alignBottom="@+id/iv_avatar"
             android:layout_toRightOf="@+id/tv_nianxian"
@@ -83,6 +83,7 @@
             android:layout_marginBottom="1dp"
             android:text="设计师简介"
             android:textSize="15sp" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -172,5 +173,14 @@
             android:layout_marginTop="2dp"
             android:layout_marginLeft="35dp"
             android:textSize="15sp" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="作品详情"
+            android:id="@+id/btn_work"
+            android:layout_gravity="center_horizontal" />
+
     </LinearLayout>
 </LinearLayout>

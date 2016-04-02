@@ -2,10 +2,13 @@ package com.wilben.enddesign.activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,6 +34,7 @@ public class DesignerDetailActivity extends Activity {
     private Designer designer;
     private Bitmap bm = null;
     private ProgressDialog p;
+    private Button btn_work;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,7 +44,7 @@ public class DesignerDetailActivity extends Activity {
         Bundle bundle = getIntent().getExtras();
         username = bundle.getString("username");
         p.show();
-        new getDesignerDetail().execute("DesignerDetail",username);
+        new getDesignerDetail().execute("DesignerDetail", username);
     }
 
     private void init() {
@@ -52,8 +56,20 @@ public class DesignerDetailActivity extends Activity {
         tv_work = (TextView) findViewById(R.id.tv_work);
         tv_area = (TextView) findViewById(R.id.tv_area);
         iv_avatar = (ImageView) findViewById(R.id.iv_avatar);
+        btn_work = (Button) findViewById(R.id.btn_work);
         p = new ProgressDialog(this);
         p.setMessage("加载中...");
+        btn_work.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("username", designer.getUsername());
+                Intent intent = new Intent();
+                intent.putExtras(bundle);
+                intent.setClass(DesignerDetailActivity.this, WorkActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     class getDesignerDetail extends AsyncTask<String, Void, String> {

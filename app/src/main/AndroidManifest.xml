@@ -55,6 +55,7 @@
         <activity android:name=".activity.ChangePwdActivity"></activity>
         <activity android:name=".activity.U_editinfoActivity"></activity>
         <activity android:name=".activity.DesignerDetailActivity"></activity>
+        <activity android:name=".activity.WorkActivity"></activity>
     </application>
 
 </manifest>

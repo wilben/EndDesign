@@ -79,7 +79,6 @@ public class RegisterActivity extends Activity {
                         // 如果用户名不为空，那么将用户名提交到服务器上进行验证，看用户名是否存在，就像JavaEE中利用
                         // ajax一样，虽然你看不到但是它却偷偷摸摸做了很多
                         public void run() {
-//                            Operation operaton = new Operation();
                             String result = new HttpUtils()
                                     .checkusername("Check", str);
                             System.out.println("result:" + result);
