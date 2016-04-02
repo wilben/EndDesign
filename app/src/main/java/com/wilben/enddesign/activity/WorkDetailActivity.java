@@ -2,8 +2,11 @@ package com.wilben.enddesign.activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 
 import com.wilben.enddesign.NoScrollGridView;
 import com.wilben.enddesign.R;
@@ -37,9 +40,19 @@ public class WorkDetailActivity extends Activity {
         workId = bundle.getString("workId");
         p = new ProgressDialog(this);
         p.setMessage("加载中...");
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(WorkDetailActivity.this, ImagePagerActivity.class);
+                intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_URLS, imageList);
+                intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_INDEX, position);
+                startActivity(intent);
+            }
+        });
         p.show();
         new WorkDetailAsyncTask().execute("WorkDetail", workId);
     }
+
 
     class WorkDetailAsyncTask extends AsyncTask<String, Void, String> {
         @Override
