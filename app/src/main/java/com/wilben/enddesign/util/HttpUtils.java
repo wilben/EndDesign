@@ -30,7 +30,7 @@ public class HttpUtils {
         URL url = null;
         String s = "";
         try {
-            url = new URL(path);
+            url = new URL(URLVAR+path);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("POST");
             conn.setConnectTimeout(5000);

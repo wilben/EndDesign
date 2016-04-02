@@ -16,7 +16,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.wilben.enddesign.NoScrollGridView;
 import com.wilben.enddesign.R;
 import com.wilben.enddesign.activity.ImagePagerActivity;
-import com.wilben.enddesign.entity.ItemEntity;
+import com.wilben.enddesign.entity.Case;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,12 +26,12 @@ import java.util.List;
  *
  * @author Administrator
  */
-public class ListItemAdapter extends BaseAdapter {
+public class ListCaseAdapter extends BaseAdapter {
 
     private Context mContext;
-    private List<ItemEntity> items;
+    private List<Case> items;
 
-    public ListItemAdapter(Context ctx, List<ItemEntity> items) {
+    public ListCaseAdapter(Context ctx, List<Case> items) {
         this.mContext = ctx;
         this.items = items;
     }
@@ -59,16 +59,16 @@ public class ListItemAdapter extends BaseAdapter {
             holder = new ViewHolder();
             convertView = View.inflate(mContext, R.layout.item_list, null);
             holder.iv_avatar = (ImageView) convertView.findViewById(R.id.iv_avatar);
-            holder.tv_title = (TextView) convertView.findViewById(R.id.tv_title);
-            holder.tv_content = (TextView) convertView.findViewById(R.id.tv_content);
+            holder.tv_username = (TextView) convertView.findViewById(R.id.tv_username);
+            holder.tv_description = (TextView) convertView.findViewById(R.id.tv_description);
             holder.gridview = (NoScrollGridView) convertView.findViewById(R.id.gridview);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        ItemEntity itemEntity = items.get(position);
-        holder.tv_title.setText(itemEntity.getTitle());
-        holder.tv_content.setText(itemEntity.getContent());
+        Case itemEntity = items.get(position);
+        holder.tv_username.setText(itemEntity.getUsername());
+        holder.tv_description.setText(itemEntity.getDescription());
         // 使用ImageLoader加载网络图片
         DisplayImageOptions options = new DisplayImageOptions.Builder()//
                 .showImageOnLoading(R.mipmap.ic_launcher) // 加载中显示的默认图片
@@ -117,8 +117,8 @@ public class ListItemAdapter extends BaseAdapter {
      */
     class ViewHolder {
         private ImageView iv_avatar;
-        private TextView tv_title;
-        private TextView tv_content;
+        private TextView tv_username;
+        private TextView tv_description;
         private NoScrollGridView gridview;
     }
 }

@@ -1,10 +1,7 @@
 package com.wilben.enddesign.operation;
 
-import android.content.Context;
-
-import com.wilben.enddesign.R;
+import com.wilben.enddesign.entity.Case;
 import com.wilben.enddesign.entity.Designer;
-import com.wilben.enddesign.entity.ItemEntity;
 import com.wilben.enddesign.entity.User;
 import com.wilben.enddesign.entity.Work;
 import com.wilben.enddesign.util.HttpUtils;
@@ -17,21 +14,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearchService {
-    //得到所有的头条新闻
 
-    public List<ItemEntity> getCase(Context context, List<ItemEntity> headerNews) throws Exception {
-        String path = context.getResources().getString(R.string.Infourl);
+    public List<Case> getCase(String path, List<Case> caseList) throws Exception {
         String s = new HttpUtils().getData(path);
 
         JSONObject jsonObject1 = new JSONObject(s);
         //返回json的数组
-        JSONArray jsonArray = jsonObject1.getJSONArray("case");
+        JSONArray jsonArray = jsonObject1.getJSONArray("allproject");
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
-            ItemEntity headerNew = new ItemEntity();
-            headerNew.setAvatar(jsonObject.getString("avatar"));
-            headerNew.setTitle(jsonObject.getString("title"));
-            headerNew.setContent(jsonObject.getString("content"));
+            Case caseItem = new Case();
+            caseItem.setAvatar(jsonObject.getString("avatar"));
+            caseItem.setUsername(jsonObject.getString("username"));
+            caseItem.setDescription(jsonObject.getString("description"));
             //解析照片路径
             ArrayList<String> listString = new ArrayList<String>();
             JSONArray jsonArray1 = jsonObject.getJSONArray("imageUrls");
@@ -39,16 +34,15 @@ public class SearchService {
                 String msg = jsonArray1.getString(j);
                 listString.add(msg);
             }
-            headerNew.setImageUrls(listString);
+            caseItem.setImageUrls(listString);
 
-            headerNews.add(headerNew);
+            caseList.add(caseItem);
         }
 
-        return headerNews;
+        return caseList;
     }
 
-    public List<Designer> getAllDesigner(Context context, List<Designer> designerList) throws Exception {
-        String path = context.getResources().getString(R.string.Designerurl);
+    public List<Designer> getAllDesigner(String path, List<Designer> designerList) throws Exception {
         String s = new HttpUtils().getData(path);
         JSONObject jsonObject1 = new JSONObject(s);
         //返回json的数组

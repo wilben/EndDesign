@@ -74,7 +74,7 @@ public class U_DesignerFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        new JsonAsyncTask().execute(getActivity());
+        new JsonAsyncTask().execute("AllDesigner");
         return view;
     }
 
@@ -112,11 +112,11 @@ public class U_DesignerFragment extends Fragment {
     }
 
 
-    class JsonAsyncTask extends AsyncTask<Context, Void, String> {
+    class JsonAsyncTask extends AsyncTask<String, Void, String> {
 
 
         @Override
-        protected String doInBackground(Context... params) {
+        protected String doInBackground(String... params) {
             try {
                 listDesigner.clear();
                 listDesigner = new SearchService().getAllDesigner(params[0], listDesigner);
