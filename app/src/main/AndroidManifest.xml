@@ -56,6 +56,7 @@
         <activity android:name=".activity.U_editinfoActivity"></activity>
         <activity android:name=".activity.DesignerDetailActivity"></activity>
         <activity android:name=".activity.WorkActivity"></activity>
+        <activity android:name=".activity.WorkDetailActivity"></activity>
     </application>
 
 </manifest>

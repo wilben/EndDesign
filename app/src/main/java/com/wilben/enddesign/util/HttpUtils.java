@@ -284,4 +284,15 @@ public class HttpUtils {
         }
         return getData(path, jsonObject);
     }
+
+    public String getWorkDetail(String path, String workId) {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("workId", workId);
+        } catch (JSONException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        return getData(path, jsonObject);
+    }
 }

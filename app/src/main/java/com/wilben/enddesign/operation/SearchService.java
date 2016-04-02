@@ -111,4 +111,16 @@ public class SearchService {
         }
         return listWork;
     }
+
+    public ArrayList<String> getWorkDetail(String path, String workId, ArrayList<String> imageList) throws JSONException {
+        String s = new HttpUtils().getWorkDetail(path, workId);
+        JSONObject jsonObject1 = new JSONObject(s);
+        //返回json的数组
+        JSONArray jsonArray = jsonObject1.getJSONArray("workdetail");
+        for (int i = 0; i < jsonArray.length(); i++) {
+            String msg = jsonArray.getString(i);
+            imageList.add(msg);
+        }
+        return imageList;
+    }
 }

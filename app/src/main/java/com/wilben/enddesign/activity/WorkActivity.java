@@ -2,6 +2,7 @@ package com.wilben.enddesign.activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -32,7 +33,7 @@ public class WorkActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.work_grid);
-        Bundle bundle = getIntent().getExtras();
+        final Bundle bundle = getIntent().getExtras();
         username = bundle.getString("username");
         gridView = (GridView) findViewById(R.id.gv_work);
         listWork = new ArrayList<Work>();
@@ -43,6 +44,12 @@ public class WorkActivity extends Activity {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent();
+                Bundle bundle1 = new Bundle();
+                bundle1.putString("workId", String.valueOf(ID[position]));
+                intent.putExtras(bundle1);
+                intent.setClass(WorkActivity.this, WorkDetailActivity.class);
+                startActivity(intent);
             }
         });
         p.show();
