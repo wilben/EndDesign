@@ -2,6 +2,7 @@ package com.wilben.enddesign.operation;
 
 import com.wilben.enddesign.entity.Case;
 import com.wilben.enddesign.entity.Designer;
+import com.wilben.enddesign.entity.Project;
 import com.wilben.enddesign.entity.User;
 import com.wilben.enddesign.entity.Work;
 import com.wilben.enddesign.util.HttpUtils;
@@ -116,5 +117,24 @@ public class SearchService {
             imageList.add(msg);
         }
         return imageList;
+    }
+
+    public List<Project> getProject(String path, String username, String position, List<Project> projectList) throws JSONException {
+        String s = new HttpUtils().getProject(path, username, position);
+        JSONObject jsonObject1 = new JSONObject(s);
+        //返回json的数组
+        JSONArray jsonArray = jsonObject1.getJSONArray("projects");
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            Project project = new Project();
+            project.setImage(jsonObject.getString("image"));
+            project.setTitle(jsonObject.getString("title"));
+            project.setTime(jsonObject.getString("time"));
+            project.setUsername(jsonObject.getString("username"));
+            project.setWorkId(jsonObject.getInt("workId"));
+            project.setState(jsonObject.getInt("state"));
+            projectList.add(project);
+        }
+        return projectList;
     }
 }

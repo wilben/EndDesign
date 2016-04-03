@@ -17,23 +17,23 @@
             android:id="@+id/relativeLayout1"
             android:layout_width="match_parent"
             android:layout_height="145dip"
-            android:orientation="vertical"
+            android:layout_gravity="top"
             android:background="@mipmap/mine_head"
-            android:layout_gravity="top">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/linear"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:gravity="center_horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal">
 
                 <ImageView
                     android:id="@+id/iv_avatar"
                     android:layout_width="95dp"
                     android:layout_height="95dp"
-                    android:src="@mipmap/default_avatar"
-                    android:layout_gravity="bottom" />
+                    android:layout_gravity="bottom"
+                    android:src="@mipmap/default_avatar" />
             </LinearLayout>
 
             <TextView
@@ -42,12 +42,12 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/linear"
                 android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
                 android:text="用户名"
                 android:textColor="#545149"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp" />
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -194,7 +194,7 @@
         android:layout_below="@+id/RelativeLayoutLogin"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/exit"
         android:text="退出登录"
 

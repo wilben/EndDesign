@@ -68,6 +68,9 @@ public class U_MainActivity extends FragmentActivity implements RadioGroup.OnChe
             case 2:
                 if (projectFragment == null) {
                     projectFragment = new U_ProjectFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("username", username);
+                    projectFragment.setArguments(bundle);
                     beginTransaction.add(R.id.main_content, projectFragment);
                 } else {
                     beginTransaction.show(projectFragment);

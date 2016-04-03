@@ -18,7 +18,6 @@ import com.wilben.enddesign.adapter.ImageAdapter;
 public class U_ProjectFragment extends Fragment {
 
     private String username;
-    private ProgressDialog p;
     private GridView gv_project;
     private ListAdapter listAdapter;
 
@@ -31,8 +30,6 @@ public class U_ProjectFragment extends Fragment {
             username = bundle.getString("username");
         }
         init(view);
-        p = new ProgressDialog(getActivity());
-        p.setMessage("加载中...");
         gv_project.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

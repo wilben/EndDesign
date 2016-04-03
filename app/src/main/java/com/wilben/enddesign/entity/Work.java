@@ -5,6 +5,7 @@ public class Work {
     private String title;
     private int workId;
 
+
     public Work() {
     }
 

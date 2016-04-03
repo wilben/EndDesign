@@ -12,15 +12,20 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wilben.enddesign.R;
 import com.wilben.enddesign.activity.ChangePwdActivity;
 import com.wilben.enddesign.activity.LoginActivity;
+import com.wilben.enddesign.activity.MyProjectActivity;
 import com.wilben.enddesign.activity.U_infoActivity;
+import com.wilben.enddesign.adapter.ImageAdapter;
 import com.wilben.enddesign.util.HttpUtils;
 
 import java.io.InputStream;
