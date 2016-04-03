@@ -2,8 +2,11 @@ package com.wilben.enddesign.activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.wilben.enddesign.R;
@@ -48,6 +51,16 @@ public class MyProjectActivity extends Activity {
         p.setMessage("加载中...");
         p.show();
         new ProjectAsyncTask().execute("Project", username, position);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MyProjectActivity.this, WorkDetailActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("workId", String.valueOf(ID[position]));
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
     }
 
     class ProjectAsyncTask extends AsyncTask<String, Void, String> {

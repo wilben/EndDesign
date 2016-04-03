@@ -107,16 +107,27 @@ public class SearchService {
         return listWork;
     }
 
-    public ArrayList<String> getWorkDetail(String path, String workId, ArrayList<String> imageList) throws JSONException {
+    public Project getWorkDetail(String path, String workId) throws JSONException {
         String s = new HttpUtils().getWorkDetail(path, workId);
         JSONObject jsonObject1 = new JSONObject(s);
         //返回json的数组
-        JSONArray jsonArray = jsonObject1.getJSONArray("workdetail");
-        for (int i = 0; i < jsonArray.length(); i++) {
-            String msg = jsonArray.getString(i);
-            imageList.add(msg);
+        JSONObject jsonObject = jsonObject1.getJSONObject("workdetail");
+        Project project = new Project();
+        project.setTitle(jsonObject.getString("title"));
+        project.setUsername(jsonObject.getString("username"));
+        project.setTime(jsonObject.getString("time"));
+        project.setDescription(jsonObject.getString("description"));
+        project.setState(jsonObject.getInt("state"));
+        //解析照片路径
+        ArrayList<String> listString = new ArrayList<String>();
+        JSONArray jsonArray1 = jsonObject.getJSONArray("imageUrls");
+        for (int j = 0; j < jsonArray1.length(); j++) {
+            String msg = jsonArray1.getString(j);
+            listString.add(msg);
         }
-        return imageList;
+        project.setImageUrls(listString);
+
+        return project;
     }
 
     public List<Project> getProject(String path, String username, String position, List<Project> projectList) throws JSONException {
