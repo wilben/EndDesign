@@ -1,5 +1,6 @@
 package com.wilben.enddesign.fragment;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -12,20 +13,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wilben.enddesign.R;
 import com.wilben.enddesign.activity.ChangePwdActivity;
 import com.wilben.enddesign.activity.LoginActivity;
-import com.wilben.enddesign.activity.MyProjectActivity;
+import com.wilben.enddesign.activity.StyleActivity;
 import com.wilben.enddesign.activity.U_infoActivity;
-import com.wilben.enddesign.adapter.ImageAdapter;
 import com.wilben.enddesign.util.HttpUtils;
 
 import java.io.InputStream;
@@ -41,6 +38,9 @@ public class U_MyFragment extends Fragment implements View.OnClickListener {
     private String username;
     private Bitmap bm = null;
     private ProgressDialog p;
+//    private boolean[] flags = new boolean[]{false, false, false};//初始复选情况
+//    private String[] items = new String[]{"现代简约", "地中海", "欧式"};
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -123,11 +123,59 @@ public class U_MyFragment extends Fragment implements View.OnClickListener {
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;
+            case R.id.rl_style:
+                intent.setClass(getActivity(), StyleActivity.class);
+                bundle = new Bundle();
+                bundle.putString("username", username);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                break;
             default:
                 break;
 
         }
     }
+
+//    public void showDialog() {
+//
+//        final StringBuilder sb = new StringBuilder();
+//        //创建对话框
+//        AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getActivity());
+//        //设置对话框的图标
+//        builder.setIcon(R.mipmap.ic_launcher);
+//        //设置对话框的标题
+//        builder.setTitle("复选框对话框");
+//        builder.setMultiChoiceItems(items, flags, new DialogInterface.OnMultiChoiceClickListener() {
+//            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+//                flags[which] = isChecked;
+//                String result = "您选择了：";
+//                for (int i = 0; i < flags.length; i++) {
+//                    if (flags[i]) {
+//                        result = result + items[i] + "、";
+//                    }
+//                }
+//                rl_style.setText(result.substring(0, result.length() - 1));
+//            }
+//        });
+//
+//        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+//
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                for (int i = 0; i < defaultSelectedStatus.length; i++) {
+//                    if (defaultSelectedStatus[i]) {
+//                        sb.append(multiChoiceItems[i]);
+//                    }
+//                }
+//                // TODO Auto-generated method stub
+//                Toast.makeText(context, sb.toString(), Toast.LENGTH_LONG).show();
+//
+//            }
+//        })
+//                .setNegativeButton("取消", null)//设置对话框[否定]按钮
+//                .show();
+//    }
+
 
     class AvatarAsyncTask extends AsyncTask<String, Void, Integer> {
 

@@ -319,4 +319,27 @@ public class HttpUtils {
         }
         return getData(path, jsonObject);
     }
+
+    public String saveStyle(String path, String username, String style) {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("username", username);
+            jsonObject.put("style", style);
+        } catch (JSONException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        return getData(path, jsonObject);
+    }
+
+    public String getStyle(String path, String username) {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("username", username);
+        } catch (JSONException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        return getData(path, jsonObject);
+    }
 }
