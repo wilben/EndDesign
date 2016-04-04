@@ -11,16 +11,16 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.wilben.enddesign.R;
-import com.wilben.enddesign.entity.Work;
+import com.wilben.enddesign.entity.Project;
 
 import java.util.List;
 
 public class WorkAdapter extends BaseAdapter {
 
-    private List<Work> list;
+    private List<Project> list;
     private Context context;
 
-    public WorkAdapter(Context context, List<Work> list) {
+    public WorkAdapter(Context context, List<Project> list) {
         super();
         this.context = context;
         this.list = list;
@@ -54,7 +54,7 @@ public class WorkAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        Work workEntity = list.get(position);
+        Project workEntity = list.get(position);
         holder.tv_title.setText(workEntity.getTitle());
         // 使用ImageLoader加载网络图片
         DisplayImageOptions options = new DisplayImageOptions.Builder()//
@@ -64,7 +64,7 @@ public class WorkAdapter extends BaseAdapter {
                 .cacheOnDisk(true) // sdcard缓存
                 .bitmapConfig(Bitmap.Config.RGB_565)// 设置最低配置
                 .build();//
-        ImageLoader.getInstance().displayImage(workEntity.getImageUrl(), holder.iv_image, options);
+        ImageLoader.getInstance().displayImage(workEntity.getImage(), holder.iv_image, options);
         return convertView;
     }
 

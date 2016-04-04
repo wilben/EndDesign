@@ -4,7 +4,6 @@ import com.wilben.enddesign.entity.Case;
 import com.wilben.enddesign.entity.Designer;
 import com.wilben.enddesign.entity.Project;
 import com.wilben.enddesign.entity.User;
-import com.wilben.enddesign.entity.Work;
 import com.wilben.enddesign.util.HttpUtils;
 
 import org.json.JSONArray;
@@ -91,24 +90,25 @@ public class SearchService {
         return designer;
     }
 
-    public List<Work> getWorks(String path, String username, List<Work> listWork) throws JSONException {
+    public List<Project> getWorks(String path, String username, List<Project> listWork) throws JSONException {
         String s = new HttpUtils().getWorks(path, username);
         JSONObject jsonObject1 = new JSONObject(s);
         //返回json的数组
         JSONArray jsonArray = jsonObject1.getJSONArray("works");
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
-            Work work = new Work();
-            work.setImageUrl(jsonObject.getString("imageUrl"));
+            Project work = new Project();
+            work.setImage(jsonObject.getString("image"));
             work.setTitle(jsonObject.getString("title"));
             work.setWorkId(jsonObject.getInt("workId"));
+            work.setState(jsonObject.getInt("state"));
             listWork.add(work);
         }
         return listWork;
     }
 
-    public Project getWorkDetail(String path, String workId) throws JSONException {
-        String s = new HttpUtils().getWorkDetail(path, workId);
+    public Project getWorkDetail(String path, String workId, String state) throws JSONException {
+        String s = new HttpUtils().getWorkDetail(path, workId, state);
         JSONObject jsonObject1 = new JSONObject(s);
         //返回json的数组
         JSONObject jsonObject = jsonObject1.getJSONObject("workdetail");

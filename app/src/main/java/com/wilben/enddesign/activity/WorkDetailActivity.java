@@ -26,6 +26,7 @@ public class WorkDetailActivity extends Activity {
 
     private NoScrollGridView gridView;
     private String workId;
+    private String state;
     private Project project;
     private ArrayList<String> imageList;
     private NoScrollGridAdapter adapter;
@@ -40,6 +41,7 @@ public class WorkDetailActivity extends Activity {
         imageList = new ArrayList<String>();
         Bundle bundle = getIntent().getExtras();
         workId = bundle.getString("workId");
+        state = bundle.getString("state");
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -50,7 +52,7 @@ public class WorkDetailActivity extends Activity {
             }
         });
         p.show();
-        new WorkDetailAsyncTask().execute("WorkDetail", workId);
+        new WorkDetailAsyncTask().execute("WorkDetail", workId, state);
     }
 
     private void init() {
@@ -70,7 +72,7 @@ public class WorkDetailActivity extends Activity {
         protected String doInBackground(String... params) {
             try {
                 project = new Project();
-                project = new SearchService().getWorkDetail(params[0], params[1]);
+                project = new SearchService().getWorkDetail(params[0], params[1], params[2]);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

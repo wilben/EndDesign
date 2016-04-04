@@ -30,7 +30,7 @@ public class HttpUtils {
         URL url = null;
         String s = "";
         try {
-            url = new URL(URLVAR+path);
+            url = new URL(URLVAR + path);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("POST");
             conn.setConnectTimeout(5000);
@@ -285,10 +285,11 @@ public class HttpUtils {
         return getData(path, jsonObject);
     }
 
-    public String getWorkDetail(String path, String workId) {
+    public String getWorkDetail(String path, String workId, String state) {
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("workId", workId);
+            jsonObject.put("state", state);
         } catch (JSONException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();

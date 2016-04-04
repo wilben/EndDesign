@@ -35,6 +35,7 @@ public class MyProjectActivity extends Activity {
     private ProjectAdapter adapter;
     private ProgressDialog p;
     private int ID[];
+    private int State[];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +58,7 @@ public class MyProjectActivity extends Activity {
                 Intent intent = new Intent(MyProjectActivity.this, WorkDetailActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("workId", String.valueOf(ID[position]));
+                bundle.putString("state", String.valueOf(State[position]));
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
@@ -71,8 +73,11 @@ public class MyProjectActivity extends Activity {
             try {
                 projectList = new SearchService().getProject(params[0], params[1], params[2], projectList);
                 ID = new int[projectList.size()];
-                for (int i = 0; i < projectList.size(); i++)
+                State = new int[projectList.size()];
+                for (int i = 0; i < projectList.size(); i++) {
                     ID[i] = projectList.get(i).getWorkId();
+                    State[i] = projectList.get(i).getState();
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
