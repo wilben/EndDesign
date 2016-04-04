@@ -1,6 +1,5 @@
 package com.wilben.enddesign.operation;
 
-import com.wilben.enddesign.entity.Case;
 import com.wilben.enddesign.entity.Designer;
 import com.wilben.enddesign.entity.Project;
 import com.wilben.enddesign.entity.User;
@@ -15,7 +14,7 @@ import java.util.List;
 
 public class SearchService {
 
-    public List<Case> getCase(String path, List<Case> caseList) throws Exception {
+    public List<Project> getCase(String path, List<Project> caseList) throws Exception {
         String s = new HttpUtils().getData(path);
 
         JSONObject jsonObject1 = new JSONObject(s);
@@ -23,8 +22,8 @@ public class SearchService {
         JSONArray jsonArray = jsonObject1.getJSONArray("allproject");
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
-            Case caseItem = new Case();
-            caseItem.setAvatar(jsonObject.getString("avatar"));
+            Project caseItem = new Project();
+            caseItem.setImage(jsonObject.getString("image"));
             caseItem.setUsername(jsonObject.getString("username"));
             caseItem.setDescription(jsonObject.getString("description"));
             //解析照片路径
@@ -148,4 +147,5 @@ public class SearchService {
         }
         return projectList;
     }
+
 }

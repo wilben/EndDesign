@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.wilben.enddesign.R;
-import com.wilben.enddesign.operation.SearchService;
 import com.wilben.enddesign.adapter.ListCaseAdapter;
-import com.wilben.enddesign.entity.Case;
+import com.wilben.enddesign.entity.Project;
+import com.wilben.enddesign.operation.SearchService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ public class U_CaseFragment extends Fragment {
     /**
      * Item数据实体集合
      */
-    private List<Case> itemEntities;
+    private List<Project> itemEntities;
     /**
      * ListView对象
      */
@@ -40,7 +40,7 @@ public class U_CaseFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.u_casefragment, container, false);
         listview = (ListView) view.findViewById(R.id.listview);
-        itemEntities = new ArrayList<Case>();
+        itemEntities = new ArrayList<Project>();
         adapter = new ListCaseAdapter(getActivity(), itemEntities);
         listview.setAdapter(adapter);
         p = new ProgressDialog(getActivity());

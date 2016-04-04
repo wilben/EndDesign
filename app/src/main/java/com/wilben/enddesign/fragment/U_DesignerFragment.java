@@ -1,7 +1,6 @@
 package com.wilben.enddesign.fragment;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -42,6 +41,10 @@ public class U_DesignerFragment extends Fragment {
     private BDLocationListener myListener = new MyLocationListener();
     private ProgressDialog p;
     private String[] names;
+    private Bundle bundle;
+    private Intent intent;
+    private String username;
+    private String user;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,10 @@ public class U_DesignerFragment extends Fragment {
         listview = (ListView) view.findViewById(R.id.listview);
         local_city = (TextView) view.findViewById(R.id.local_city);
         getlocation();
+        bundle = getArguments();
+        if (bundle != null) {
+            user = bundle.getString("user");
+        }
         listDesigner = new ArrayList<Designer>();
         adapter = new ListDesignerAdapter(getActivity(), listDesigner);
         listview.setAdapter(adapter);
@@ -65,10 +72,11 @@ public class U_DesignerFragment extends Fragment {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String username = names[position];
-                Bundle bundle = new Bundle();
+                username = names[position];
+                bundle = new Bundle();
                 bundle.putString("username", username);
-                Intent intent = new Intent();
+                bundle.putString("user", user);
+                intent = new Intent();
                 intent.setClass(getActivity(), DesignerDetailActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);

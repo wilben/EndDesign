@@ -17,8 +17,8 @@
             android:id="@+id/iv_avatar"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginTop="7dp"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="7dp"
             android:background="@mipmap/default_avatar"
             android:scaleType="centerCrop" />
 
@@ -36,33 +36,34 @@
             android:id="@+id/tv_nianxian"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="从业年限:"
-            android:textSize="15sp"
+            android:layout_alignBottom="@+id/iv_avatar"
             android:layout_marginLeft="45dp"
             android:layout_marginStart="45dp"
-            android:layout_alignBottom="@+id/iv_avatar"
+            android:layout_toEndOf="@+id/tv_username"
             android:layout_toRightOf="@+id/tv_username"
-            android:layout_toEndOf="@+id/tv_username" />
+            android:text="从业年限:"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/tv_period"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="3dp"
-            android:textSize="15sp"
             android:layout_alignBottom="@+id/iv_avatar"
+            android:layout_marginLeft="3dp"
+            android:layout_toEndOf="@+id/tv_nianxian"
             android:layout_toRightOf="@+id/tv_nianxian"
-            android:layout_toEndOf="@+id/tv_nianxian" />
+            android:textSize="15sp" />
+
         <TextView
             android:id="@+id/tv_nian"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="3dp"
-            android:text="年"
-            android:textSize="15sp"
             android:layout_alignBottom="@+id/iv_avatar"
+            android:layout_marginLeft="3dp"
+            android:layout_toEndOf="@+id/tv_period"
             android:layout_toRightOf="@+id/tv_period"
-            android:layout_toEndOf="@+id/tv_period" />
+            android:text="年"
+            android:textSize="15sp" />
     </RelativeLayout>
 
     <LinearLayout
@@ -78,9 +79,9 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_gravity="bottom|left"
+            android:layout_marginBottom="1dp"
             android:layout_marginLeft="15dp"
             android:layout_toRightOf="@id/iv_avatar"
-            android:layout_marginBottom="1dp"
             android:text="设计师简介"
             android:textSize="15sp" />
 
@@ -88,99 +89,122 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
-        android:orientation="vertical"
-        android:background="#ffffff">
+        android:background="#ffffff"
+        android:orientation="vertical">
 
 
         <TextView
             android:id="@+id/tv_linian"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
             android:text="设计理念:"
             android:textSize="15sp" />
+
         <TextView
             android:id="@+id/tv_concept"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
             android:layout_marginLeft="35dp"
+            android:layout_marginTop="2dp"
             android:textSize="15sp" />
 
         <TextView
             android:id="@+id/tv_geyan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
             android:text="人生格言:"
             android:textSize="15sp" />
+
         <TextView
             android:id="@+id/tv_motto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
             android:layout_marginLeft="35dp"
+            android:layout_marginTop="2dp"
             android:textSize="15sp" />
 
         <TextView
             android:id="@+id/tv_fengge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
             android:text="擅长风格:"
             android:textSize="15sp" />
+
         <TextView
             android:id="@+id/tv_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
             android:layout_marginLeft="35dp"
+            android:layout_marginTop="2dp"
             android:textSize="15sp" />
 
         <TextView
             android:id="@+id/tv_zuopin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
             android:text="作品:"
             android:textSize="15sp" />
+
         <TextView
             android:id="@+id/tv_work"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
             android:layout_marginLeft="35dp"
+            android:layout_marginTop="2dp"
             android:textSize="15sp" />
 
         <TextView
             android:id="@+id/tv_quyu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
             android:text="服务区域:"
             android:textSize="15sp" />
+
         <TextView
             android:id="@+id/tv_area"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
             android:layout_marginLeft="35dp"
+            android:layout_marginTop="2dp"
             android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="1dp"
+        android:background="#ffffff"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
 
         <Button
+            android:id="@+id/btn_work"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="作品详情"
-            android:id="@+id/btn_work"
-            android:layout_gravity="center_horizontal" />
+            android:layout_marginTop="5dp"
+            android:text="作品详情" />
+
+        <Button
+            android:id="@+id/btn_launch"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:text="发起项目" />
 
     </LinearLayout>
 </LinearLayout>

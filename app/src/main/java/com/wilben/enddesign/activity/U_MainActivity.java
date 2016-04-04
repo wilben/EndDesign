@@ -4,15 +4,12 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.wilben.enddesign.R;
 import com.wilben.enddesign.fragment.U_CaseFragment;
 import com.wilben.enddesign.fragment.U_DesignerFragment;
-import com.wilben.enddesign.fragment.D_ProjectFragment;
-import com.wilben.enddesign.fragment.D_MyFragment;
 import com.wilben.enddesign.fragment.U_MyFragment;
 import com.wilben.enddesign.fragment.U_ProjectFragment;
 
@@ -52,6 +49,9 @@ public class U_MainActivity extends FragmentActivity implements RadioGroup.OnChe
             case 1:
                 if (designerFrament == null) {
                     designerFrament = new U_DesignerFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("user", username);
+                    designerFrament.setArguments(bundle);
                     beginTransaction.add(R.id.main_content, designerFrament);
                 } else {
                     beginTransaction.show(designerFrament);

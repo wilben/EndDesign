@@ -30,11 +30,15 @@ public class DesignerDetailActivity extends Activity {
     private TextView tv_work;
     private TextView tv_area;
     private String username;
+    private String user;
     private ImageView iv_avatar;
     private Designer designer;
     private Bitmap bm = null;
     private ProgressDialog p;
     private Button btn_work;
+    private Button btn_launch;
+    private Bundle bundle;
+    private Intent intent;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,7 @@ public class DesignerDetailActivity extends Activity {
         init();
         Bundle bundle = getIntent().getExtras();
         username = bundle.getString("username");
+        user = bundle.getString("user");
         p.show();
         new getDesignerDetail().execute("DesignerDetail", username);
     }
@@ -57,16 +62,28 @@ public class DesignerDetailActivity extends Activity {
         tv_area = (TextView) findViewById(R.id.tv_area);
         iv_avatar = (ImageView) findViewById(R.id.iv_avatar);
         btn_work = (Button) findViewById(R.id.btn_work);
+        btn_launch = (Button) findViewById(R.id.btn_launch);
         p = new ProgressDialog(this);
         p.setMessage("加载中...");
         btn_work.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle = new Bundle();
+                bundle = new Bundle();
                 bundle.putString("username", designer.getUsername());
-                Intent intent = new Intent();
+                intent = new Intent();
                 intent.putExtras(bundle);
                 intent.setClass(DesignerDetailActivity.this, WorkActivity.class);
+                startActivity(intent);
+            }
+        });
+        btn_launch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bundle = new Bundle();
+                bundle.putString("username", username);
+                bundle.putString("user", user);
+                intent = new Intent(DesignerDetailActivity.this, LaunchProjectActivity.class);
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });

@@ -16,7 +16,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.wilben.enddesign.NoScrollGridView;
 import com.wilben.enddesign.R;
 import com.wilben.enddesign.activity.ImagePagerActivity;
-import com.wilben.enddesign.entity.Case;
+import com.wilben.enddesign.entity.Project;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,9 +29,9 @@ import java.util.List;
 public class ListCaseAdapter extends BaseAdapter {
 
     private Context mContext;
-    private List<Case> items;
+    private List<Project> items;
 
-    public ListCaseAdapter(Context ctx, List<Case> items) {
+    public ListCaseAdapter(Context ctx, List<Project> items) {
         this.mContext = ctx;
         this.items = items;
     }
@@ -66,7 +66,7 @@ public class ListCaseAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        Case itemEntity = items.get(position);
+        Project itemEntity = items.get(position);
         holder.tv_username.setText(itemEntity.getUsername());
         holder.tv_description.setText(itemEntity.getDescription());
         // 使用ImageLoader加载网络图片
@@ -77,7 +77,7 @@ public class ListCaseAdapter extends BaseAdapter {
                 .cacheOnDisk(true) // sdcard缓存
                 .bitmapConfig(Config.RGB_565)// 设置最低配置
                 .build();//
-        ImageLoader.getInstance().displayImage(itemEntity.getAvatar(), holder.iv_avatar, options);
+        ImageLoader.getInstance().displayImage(itemEntity.getImage(), holder.iv_avatar, options);
         final ArrayList<String> imageUrls = itemEntity.getImageUrls();
         if (imageUrls == null || imageUrls.size() == 0) { // 没有图片资源就隐藏GridView
             holder.gridview.setVisibility(View.GONE);
