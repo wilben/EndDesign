@@ -6,25 +6,10 @@ public class User {
     private String password;
     private String sex;
     private String age;
-    private int role;
-    private String realname;
     private String avatar;
-
-    public int getRole() {
-        return role;
-    }
-
-    public void setRole(int role) {
-        this.role = role;
-    }
-
-    public String getRealname() {
-        return realname;
-    }
-
-    public void setRealname(String realname) {
-        this.realname = realname;
-    }
+    private String realname;
+    private int role;
+    private String style;
 
     public String getUsername() {
         return username;
@@ -66,15 +51,18 @@ public class User {
         this.avatar = avatar;
     }
 
-    public User(String username, String password, String sex, String realname, String age, String avatar, int role) {
+    public User(String username, String password, String sex, String age,
+                String avatar, String realname, int role, String style) {
         super();
+
         this.username = username;
         this.password = password;
         this.sex = sex;
         this.age = age;
-        this.realname = realname;
         this.avatar = avatar;
+        this.realname = realname;
         this.role = role;
+        this.style = style;
     }
 
     public User() {
@@ -82,5 +70,28 @@ public class User {
         // TODO Auto-generated constructor stub
     }
 
+    public String getStyle() {
+        return style;
+    }
+
+    public void setStyle(String style) {
+        this.style = style;
+    }
+
+    public String getRealname() {
+        return realname;
+    }
+
+    public void setRealname(String realname) {
+        this.realname = realname;
+    }
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
+    }
 
 }

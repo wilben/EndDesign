@@ -5,39 +5,46 @@
     android:background="@color/normal_bg_color"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/gray"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:layout_height="40dp"
+        android:background="@color/gray">
 
         <TextView
             android:id="@+id/local_city"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
             android:drawableLeft="@mipmap/home_ico_city"
             android:drawablePadding="@dimen/little_sapce"
             android:gravity="center_vertical"
-            android:padding="10dp"
             android:text="定位失败"
             android:textColor="@color/white" />
 
-        <FrameLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            >
+            android:layout_centerInParent="true"
+            android:drawablePadding="@dimen/little_sapce"
+            android:gravity="center_vertical"
+            android:text="设计师"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
 
-            <ImageView
-                android:id="@+id/search"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|right"
-                android:layout_marginRight="15dp"
-                android:clickable="true"
-                android:src="@mipmap/ic_home_search" />
-        </FrameLayout>
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:clickable="true"
+            android:src="@mipmap/ic_home_search" />
+
+
+    </RelativeLayout>
 
     <ListView
         android:id="@+id/listview"

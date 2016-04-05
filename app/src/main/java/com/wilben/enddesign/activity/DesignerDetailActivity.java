@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -39,6 +40,7 @@ public class DesignerDetailActivity extends Activity {
     private Button btn_launch;
     private Bundle bundle;
     private Intent intent;
+    private ImageButton f_back;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,6 +65,15 @@ public class DesignerDetailActivity extends Activity {
         iv_avatar = (ImageView) findViewById(R.id.iv_avatar);
         btn_work = (Button) findViewById(R.id.btn_work);
         btn_launch = (Button) findViewById(R.id.btn_launch);
+        f_back = (ImageButton) findViewById(R.id.ib_back);
+        f_back.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                finish();
+            }
+        });
         p = new ProgressDialog(this);
         p.setMessage("加载中...");
         btn_work.setOnClickListener(new View.OnClickListener() {

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wilben.enddesign.R;
@@ -20,7 +21,7 @@ import com.wilben.enddesign.util.HttpUtils;
 //进行联网操作了，但是本人采用了线程的操作，未采用该方法
 public class LoginActivity extends Activity {
     private Button login;
-    private Button register;
+    private TextView tv_save;
     private EditText etusername;
     private EditText etpassword;
     private String username;
@@ -32,7 +33,7 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
         init();
-        register.setOnClickListener(new RegisterOnclick());
+        tv_save.setOnClickListener(new RegisterOnclick());
         login.setOnClickListener(new LoginOnclick());
     }
 
@@ -40,7 +41,7 @@ public class LoginActivity extends Activity {
         etusername = (EditText) findViewById(R.id.etusername);
         etpassword = (EditText) findViewById(R.id.etpassword);
         login = (Button) findViewById(R.id.login);
-        register = (Button) findViewById(R.id.register);
+        tv_save = (TextView) findViewById(R.id.tv_save);
         p = new ProgressDialog(LoginActivity.this);
         p.setMessage("登录中...");
     }
@@ -50,7 +51,6 @@ public class LoginActivity extends Activity {
             Intent intent = new Intent();
             intent.setClass(LoginActivity.this, RegisterActivity.class);
             startActivity(intent);
-            finish();
         }
 
     }
@@ -79,7 +79,7 @@ public class LoginActivity extends Activity {
                 public void run() {
                     String result = null;
                     try {
-                        result =new HttpUtils().login("Login", username, password);
+                        result = new HttpUtils().login("Login", username, password);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -99,7 +99,7 @@ public class LoginActivity extends Activity {
             p.dismiss();
             Intent intent = new Intent();
             //用Bundle携带数据
-            Bundle bundle=new Bundle();
+            Bundle bundle = new Bundle();
             if (string.equals("0") || string.equals("1")) {
                 if (string.equals("0")) {
                     bundle.putString("username", username);

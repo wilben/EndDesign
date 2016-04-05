@@ -10,7 +10,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +25,7 @@ public class StyleActivity extends Activity {
     private Bundle bundle;
     private String username;
     private ProgressDialog p;
-    private LinearLayout ll_style;
+    private RelativeLayout rl_style;
     private boolean[] flags = new boolean[]{false, false, false};//初始复选情况
     private String[] items = new String[]{"现代简约", "地中海", "欧式"};
     private String result = "";
@@ -49,7 +49,7 @@ public class StyleActivity extends Activity {
         f_back = (ImageButton) findViewById(R.id.ib_back);
         tv_save = (TextView) findViewById(R.id.tv_save);
         tv_style = (TextView) findViewById(R.id.tv_style);
-        ll_style = (LinearLayout) findViewById(R.id.ll_style);
+        rl_style = (RelativeLayout) findViewById(R.id.rl_style);
         f_back.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -59,7 +59,7 @@ public class StyleActivity extends Activity {
             }
         });
 
-        ll_style.setOnClickListener(new View.OnClickListener() {
+        rl_style.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new AlertDialog.Builder(StyleActivity.this)

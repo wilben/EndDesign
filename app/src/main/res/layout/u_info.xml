@@ -24,8 +24,8 @@
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/ib_back"
             android:text="个人信息"
             android:textColor="#ffffff"
             android:textSize="@dimen/title_text_size" />

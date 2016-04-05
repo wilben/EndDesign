@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.wilben.enddesign.NoScrollGridView;
@@ -32,6 +33,7 @@ public class WorkDetailActivity extends Activity {
     private NoScrollGridAdapter adapter;
     private ProgressDialog p;
     private TextView tv_title, tv_username, tv_time, tv_description, tv_state;
+    private ImageButton f_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,15 @@ public class WorkDetailActivity extends Activity {
         tv_time = (TextView) findViewById(R.id.tv_time);
         tv_description = (TextView) findViewById(R.id.tv_description);
         tv_state = (TextView) findViewById(R.id.tv_state);
+        f_back = (ImageButton) findViewById(R.id.ib_back);
+        f_back.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                finish();
+            }
+        });
         p = new ProgressDialog(this);
         p.setMessage("加载中...");
     }

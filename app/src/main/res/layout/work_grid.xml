@@ -2,6 +2,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:orientation="vertical" android:layout_width="fill_parent"
 	android:layout_height="fill_parent">
+
+	<RelativeLayout
+		android:id="@+id/rl_top_title"
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/title_height"
+		android:layout_alignParentTop="true"
+		android:background="#000000">
+
+		<ImageButton
+			android:id="@+id/ib_back"
+			android:layout_width="@dimen/title_height"
+			android:layout_height="@dimen/title_height"
+			android:layout_centerVertical="true"
+			android:background="#00000000"
+			android:src="@mipmap/ic_back" />
+
+		<TextView
+			android:id="@+id/tv_mima"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerVertical="true"
+			android:layout_toRightOf="@+id/ib_back"
+			android:text="作品列表"
+			android:textColor="#ffffff"
+			android:textSize="@dimen/title_text_size" />
+
+	</RelativeLayout>
 	<GridView android:id="@+id/gv_work" android:layout_height="match_parent"
 		android:layout_width="match_parent" android:numColumns="3"
 		android:horizontalSpacing="5px" android:verticalSpacing="5px"></GridView>

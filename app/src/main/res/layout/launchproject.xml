@@ -4,6 +4,46 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <RelativeLayout
+        android:id="@+id/rl_top_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:layout_alignParentTop="true"
+        android:background="#000000">
+
+        <ImageButton
+            android:id="@+id/ib_back"
+            android:layout_width="@dimen/title_height"
+            android:layout_height="@dimen/title_height"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:src="@mipmap/ic_back" />
+
+        <TextView
+            android:id="@+id/tv_mima"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/ib_back"
+            android:text="新建项目"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/title_text_size" />
+
+        <TextView
+            android:id="@+id/tv_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="提交"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -25,10 +65,9 @@
             android:id="@+id/tv_username"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="123"
-            android:textSize="16dp"
             android:layout_marginLeft="20dp"
-            />
+            android:text="123"
+            android:textSize="16dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -52,18 +91,6 @@
             android:hint=" (必填)"
             android:textSize="16dp" />
     </LinearLayout>
-
-
-
-
-    <Button
-        android:id="@+id/btn_submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:text="提交"
-        android:textSize="16dp" />
 
 
 </LinearLayout>

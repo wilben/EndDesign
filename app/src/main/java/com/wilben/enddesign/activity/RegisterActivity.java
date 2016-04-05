@@ -2,16 +2,16 @@ package com.wilben.enddesign.activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wilben.enddesign.R;
@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RegisterActivity extends Activity {
-    Button submit;
+    TextView tv_save;
     EditText etusername;
     EditText etpassword;
     RadioButton ckman;
@@ -33,7 +33,6 @@ public class RegisterActivity extends Activity {
     EditText etrealname;
     String str;
     String jsonString = null;
-    ProgressDialog dialog;
     String username = null;
     String password = null;
     String sex = null;
@@ -41,8 +40,10 @@ public class RegisterActivity extends Activity {
     String repassword = null;
     String realname = null;
     String avatar = null;
+    String style = null;
     int role = 0;
     private ProgressDialog p;
+    private ImageButton f_back;
 
 
     @Override
@@ -51,11 +52,11 @@ public class RegisterActivity extends Activity {
         setContentView(R.layout.register);
         init();
         etusername.setOnFocusChangeListener(new EtusernameOnFocusChange());
-        submit.setOnClickListener(new SubmitOnclick());
+        tv_save.setOnClickListener(new SubmitOnclick());
     }
 
     private void init() {
-        submit = (Button) findViewById(R.id.submit);
+        tv_save = (TextView) findViewById(R.id.tv_save);
         etusername = (EditText) findViewById(R.id.etusername);
         etpassword = (EditText) findViewById(R.id.etpassword);
         ckman = (RadioButton) findViewById(R.id.ckman);
@@ -63,6 +64,15 @@ public class RegisterActivity extends Activity {
         etage = (EditText) findViewById(R.id.etage);
         etrealname = (EditText) findViewById(R.id.etrealname);
         etrepassword = (EditText) findViewById(R.id.etrepassword);
+        f_back = (ImageButton) findViewById(R.id.ib_back);
+        f_back.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                finish();
+            }
+        });
         p = new ProgressDialog(RegisterActivity.this);
         p.setMessage("注册中...");
     }
@@ -116,6 +126,7 @@ public class RegisterActivity extends Activity {
             realname = etrealname.getText().toString().trim();
             age = etage.getText().toString().trim();
             avatar = "";
+            style = "";
 
 
             if (username == null || username.length() <= 0) {
@@ -165,7 +176,7 @@ public class RegisterActivity extends Activity {
 
                 public void run() {
 
-                    User user = new User(username, password, sex, realname, age, avatar, role);
+                    User user = new User(username, password, sex, realname, age, avatar, role, style);
                     // 构造一个user对象
                     List<User> list = new ArrayList<User>();
                     list.add(user);
@@ -196,9 +207,6 @@ public class RegisterActivity extends Activity {
             p.dismiss();
             if (msgobj.equals("t")) {
                 Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent();
-                intent.setClass(RegisterActivity.this, LoginActivity.class);
-                startActivity(intent);
                 finish();
             } else {
                 Toast.makeText(RegisterActivity.this, "注册失败", Toast.LENGTH_SHORT).show();

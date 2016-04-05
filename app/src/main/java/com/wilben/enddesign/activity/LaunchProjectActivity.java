@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,9 +30,10 @@ public class LaunchProjectActivity extends Activity implements View.OnClickListe
     private ProgressDialog p;
     private TextView tv_username;
     private EditText et_title;
-    private Button btn_submit;
+    private TextView tv_save;
     private String title = null;
     private String time;
+    private ImageButton f_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +49,17 @@ public class LaunchProjectActivity extends Activity implements View.OnClickListe
     private void init() {
         tv_username = (TextView) findViewById(R.id.tv_username);
         et_title = (EditText) findViewById(R.id.et_title);
-        btn_submit = (Button) findViewById(R.id.btn_submit);
-        btn_submit.setOnClickListener(this);
+        tv_save = (TextView) findViewById(R.id.tv_save);
+        tv_save.setOnClickListener(this);
+        f_back = (ImageButton) findViewById(R.id.ib_back);
+        f_back.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                finish();
+            }
+        });
         p = new ProgressDialog(this);
         p.setMessage("提交中...");
     }

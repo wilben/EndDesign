@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.wilben.enddesign.R;
@@ -36,11 +37,12 @@ public class MyProjectActivity extends Activity {
     private ProgressDialog p;
     private int ID[];
     private int State[];
+    private ImageButton f_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.u_casefragment);
+        setContentView(R.layout.project);
         Bundle bundle = getIntent().getExtras();
         username = bundle.getString("username");
         position = bundle.getString("position");
@@ -48,6 +50,15 @@ public class MyProjectActivity extends Activity {
         projectList = new ArrayList<Project>();
         adapter = new ProjectAdapter(this, projectList);
         listview.setAdapter(adapter);
+        f_back = (ImageButton) findViewById(R.id.ib_back);
+        f_back.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                finish();
+            }
+        });
         p = new ProgressDialog(this);
         p.setMessage("加载中...");
         p.show();

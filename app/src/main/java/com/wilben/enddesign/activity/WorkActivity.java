@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageButton;
 
 import com.wilben.enddesign.R;
 import com.wilben.enddesign.adapter.WorkAdapter;
@@ -29,6 +30,7 @@ public class WorkActivity extends Activity {
     private ProgressDialog p;
     private int[] ID;
     private int[] State;
+    private ImageButton f_back;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,15 @@ public class WorkActivity extends Activity {
         listWork = new ArrayList<Project>();
         adapter = new WorkAdapter(this, listWork);
         gridView.setAdapter(adapter);
+        f_back = (ImageButton) findViewById(R.id.ib_back);
+        f_back.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                finish();
+            }
+        });
         p = new ProgressDialog(this);
         p.setMessage("加载中...");
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

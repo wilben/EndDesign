@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wilben.enddesign.R;
@@ -19,7 +20,7 @@ public class ChangePwdActivity extends Activity {
 
     private ImageButton f_back;
     private EditText et_password, et_repassword;
-    private Button btn_changepwd;
+    private TextView tv_save;
     String password, repassword, username;
     private ProgressDialog p;
 
@@ -39,7 +40,7 @@ public class ChangePwdActivity extends Activity {
         f_back = (ImageButton) findViewById(R.id.ib_back);
         et_password = (EditText) findViewById(R.id.et_password);
         et_repassword = (EditText) findViewById(R.id.et_repassword);
-        btn_changepwd = (Button) findViewById(R.id.btn_changepwd);
+        tv_save = (TextView) findViewById(R.id.tv_save);
         f_back.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -48,7 +49,7 @@ public class ChangePwdActivity extends Activity {
                 finish();
             }
         });
-        btn_changepwd.setOnClickListener(new View.OnClickListener() {
+        tv_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 password = et_password.getText().toString().trim();

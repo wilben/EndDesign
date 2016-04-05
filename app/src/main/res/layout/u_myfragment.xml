@@ -4,13 +4,34 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/gray">
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:drawablePadding="@dimen/little_sapce"
+            android:gravity="center_vertical"
+            android:text="我"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+
+    </RelativeLayout>
+
     <LinearLayout
         android:id="@+id/RelativeLayoutLogin"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:orientation="vertical"
-        android:padding="5dp">
+        android:padding="5dp"
+        android:layout_below="@+id/relativeLayout">
 
 
         <LinearLayout
@@ -153,7 +174,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/rl_other"
+            android:id="@+id/rl_about"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
@@ -173,7 +194,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="50dp"
-                android:text="其他"
+                android:text="关于装修设计"
                 android:textColor="@color/textcolor" />
 
             <ImageView

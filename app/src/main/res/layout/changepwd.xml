@@ -20,15 +20,28 @@
             android:src="@mipmap/ic_back" />
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_mima"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/ib_back"
             android:text="修改密码"
             android:textColor="#ffffff"
             android:textSize="@dimen/title_text_size" />
 
+        <TextView
+            android:id="@+id/tv_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="保存"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
     </RelativeLayout>
 
 
@@ -71,16 +84,6 @@
             android:hint="6-16位字符(必填)"
             android:inputType="textPassword" />
     </LinearLayout>
-
-
-    <Button
-        android:id="@+id/btn_changepwd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:text="修改"
-        android:textSize="15dp" />
 
 
 </LinearLayout>

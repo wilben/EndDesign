@@ -26,27 +26,14 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/ib_back"
-            android:text="修改我的风格"
+            android:text="关于装修设计"
             android:textColor="#ffffff"
             android:textSize="@dimen/title_text_size" />
 
-        <TextView
-            android:id="@+id/tv_save"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dip"
-            android:layout_marginRight="10dip"
-            android:clickable="true"
-            android:gravity="center"
-            android:text="保存"
-            android:textColor="#ffffff"
-            android:textSize="18sp" />
     </RelativeLayout>
 
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/rl_style"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -54,6 +41,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="20dp"
         android:background="@mipmap/cell_first"
+        android:orientation="vertical"
         android:clickable="true">
 
         <TextView
@@ -61,32 +49,25 @@
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
+            android:layout_marginTop="20dp"
             android:layout_marginLeft="25dp"
-            android:text="风格"
+            android:text="功能介绍"
             android:textColor="@color/black"
             android:textSize="15sp" />
 
         <TextView
             android:id="@+id/tv_style"
-            android:layout_width="210dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:layout_marginLeft="45dp"
             android:layout_marginRight="20dp"
-            android:layout_toLeftOf="@+id/imageView"
-            android:gravity="right"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:text="开发中..."
             android:textColor="@color/black"
             android:textSize="15sp" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="20dp"
-            android:src="@mipmap/arrow" />
-    </RelativeLayout>
+    </LinearLayout>
 
 
 </LinearLayout>

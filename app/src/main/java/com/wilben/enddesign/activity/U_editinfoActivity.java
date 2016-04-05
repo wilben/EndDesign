@@ -62,13 +62,13 @@ public class U_editinfoActivity extends Activity {
 
     public void init() {
 
-        f_back = (ImageButton) findViewById(R.id.ib_back);
         tv_username = (TextView) findViewById(R.id.tv_username);
         et_realname = (TextView) findViewById(R.id.et_realname);
         et_age = (TextView) findViewById(R.id.et_age);
         et_sex = (TextView) findViewById(R.id.et_sex);
         iv_avatar = (ImageView) findViewById(R.id.iv_avatar);
         tv_save = (TextView) findViewById(R.id.tv_save);
+        f_back = (ImageButton) findViewById(R.id.ib_back);
         f_back.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -100,7 +100,7 @@ public class U_editinfoActivity extends Activity {
                                 uploadImg = false;
                             }
                         }
-                        user = new User(username, "", sex, realname, age, avatar, 0);
+                        user = new User(username, "", sex, age, avatar, realname, 0, "");
                         List<User> list = new ArrayList<User>();
                         list.add(user);
                         WriteJson writeJson = new WriteJson();
