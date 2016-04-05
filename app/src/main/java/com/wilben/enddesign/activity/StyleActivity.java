@@ -30,6 +30,7 @@ public class StyleActivity extends Activity {
     private String[] items = new String[]{"现代简约", "地中海", "欧式"};
     private String result = "";
     String style;
+    String role;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +38,12 @@ public class StyleActivity extends Activity {
         setContentView(R.layout.mystyle);
         bundle = this.getIntent().getExtras();
         username = bundle.getString("username");
+        role = bundle.getString("role");
         init();
         p = new ProgressDialog(this);
         p.setMessage("加载中...");
         p.show();
-        new getStyleAsyncTask().execute("Style", username);
+        new getStyleAsyncTask().execute("Style", username, role);
     }
 
     public void init() {
@@ -102,7 +104,7 @@ public class StyleActivity extends Activity {
                         String result = null;
                         try {
                             style = tv_style.getText().toString().trim();
-                            result = new HttpUtils().saveStyle("SaveStyle", username, style);
+                            result = new HttpUtils().saveStyle("SaveStyle", username, style, role);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -137,7 +139,7 @@ public class StyleActivity extends Activity {
         @Override
         protected Integer doInBackground(String... params) {
             try {
-                style = new HttpUtils().getStyle(params[0], params[1]);
+                style = new HttpUtils().getStyle(params[0], params[1], params[2]);
             } catch (Exception e) {
                 e.printStackTrace();
             }

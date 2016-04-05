@@ -50,10 +50,10 @@
         <activity android:name=".activity.LoginActivity"></activity>
         <activity android:name=".activity.RegisterActivity"></activity>
         <activity android:name=".activity.D_MainActivity"></activity>
-        <activity android:name=".activity.U_infoActivity"></activity>
+        <activity android:name=".activity.InfoActivity"></activity>
         <activity android:name=".activity.U_MainActivity"></activity>
         <activity android:name=".activity.ChangePwdActivity"></activity>
-        <activity android:name=".activity.U_editinfoActivity"></activity>
+        <activity android:name=".activity.EditinfoActivity"></activity>
         <activity android:name=".activity.DesignerDetailActivity"></activity>
         <activity android:name=".activity.WorkActivity"></activity>
         <activity android:name=".activity.WorkDetailActivity"></activity>

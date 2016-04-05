@@ -103,11 +103,15 @@ public class LoginActivity extends Activity {
             if (string.equals("0") || string.equals("1")) {
                 if (string.equals("0")) {
                     bundle.putString("username", username);
+                    bundle.putString("role","0");
                     intent.putExtras(bundle);
 
                     intent.setClass(LoginActivity.this, U_MainActivity.class);
                 }
                 if (string.equals("1")) {
+                    bundle.putString("username", username);
+                    bundle.putString("role","1");
+                    intent.putExtras(bundle);
                     intent.setClass(LoginActivity.this, D_MainActivity.class);
                 }
                 startActivity(intent);

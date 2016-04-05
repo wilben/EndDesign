@@ -9,15 +9,17 @@ import android.widget.RadioGroup;
 
 import com.wilben.enddesign.R;
 import com.wilben.enddesign.fragment.D_ProjectFragment;
-import com.wilben.enddesign.fragment.D_MyFragment;
+import com.wilben.enddesign.fragment.MyFragment;
 
 public class D_MainActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener {
 
     private RadioGroup radioGroup;
     private FragmentManager fragmentManager;
     private D_ProjectFragment projectFragment;
-    private D_MyFragment myFragment;
+    private MyFragment myFragment;
     private RadioButton radio_project;
+    private String username;
+    private String role;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,10 @@ public class D_MainActivity extends FragmentActivity implements RadioGroup.OnChe
         radio_project = (RadioButton) findViewById(R.id.radio_project);
         radio_project.setChecked(true);
         radioGroup.setOnCheckedChangeListener(this);
+        Bundle bundle = this.getIntent().getExtras();
+        //接收name值
+        username = bundle.getString("username");
+        role = bundle.getString("role");
         changeFragment(0);
     }
 
@@ -46,7 +52,11 @@ public class D_MainActivity extends FragmentActivity implements RadioGroup.OnChe
                 break;
             case 1:
                 if (myFragment == null) {
-                    myFragment = new D_MyFragment();
+                    myFragment = new MyFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("username", username);
+                    bundle.putString("role", role);
+                    myFragment.setArguments(bundle);
                     beginTransaction.add(R.id.main_content, myFragment);
                 } else {
                     beginTransaction.show(myFragment);

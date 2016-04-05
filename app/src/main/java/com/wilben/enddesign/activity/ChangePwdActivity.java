@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -23,6 +22,7 @@ public class ChangePwdActivity extends Activity {
     private TextView tv_save;
     String password, repassword, username;
     private ProgressDialog p;
+    private String role;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +30,7 @@ public class ChangePwdActivity extends Activity {
         setContentView(R.layout.changepwd);
         Bundle bundle = this.getIntent().getExtras();
         username = bundle.getString("username");
+        role = bundle.getString("role");
         p = new ProgressDialog(this);
         p.setMessage("修改中...");
         init();
@@ -78,7 +79,7 @@ public class ChangePwdActivity extends Activity {
                     return;
                 }
                 p.show();
-                new changepwdAsyncTask().execute("ChangePwd", username, password);
+                new changepwdAsyncTask().execute("ChangePwd", username, password, role);
             }
         });
 
@@ -89,7 +90,7 @@ public class ChangePwdActivity extends Activity {
 
         @Override
         protected String doInBackground(String... params) {
-            String result = new HttpUtils().changePwd(params[0], params[1], params[2]);
+            String result = new HttpUtils().changePwd(params[0], params[1], params[2], params[3]);
             return result;
         }
 

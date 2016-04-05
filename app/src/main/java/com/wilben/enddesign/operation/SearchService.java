@@ -58,8 +58,8 @@ public class SearchService {
         return designerList;
     }
 
-    public User getInfo(String path, String username) throws Exception {
-        String s = new HttpUtils().getU_info(path, username);
+    public User getInfo(String path, String username, String role) throws Exception {
+        String s = new HttpUtils().getU_info(path, username, role);
 
         JSONObject jsonObject1 = new JSONObject(s);
         JSONObject jsonObject = jsonObject1.getJSONObject("info");

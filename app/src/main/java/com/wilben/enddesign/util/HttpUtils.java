@@ -76,10 +76,11 @@ public class HttpUtils {
         return getData(path, jsonObject);
     }
 
-    public String getAvatar(String path, String username) {
+    public String getAvatar(String path, String username, String role) {
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("username", username);
+            jsonObject.put("role", role);
         } catch (JSONException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
@@ -132,10 +133,11 @@ public class HttpUtils {
         return s;
     }
 
-    public String getU_info(String path, String username) {
+    public String getU_info(String path, String username, String role) {
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("username", username);
+            jsonObject.put("role", role);
         } catch (JSONException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
@@ -143,11 +145,12 @@ public class HttpUtils {
         return getData(path, jsonObject);
     }
 
-    public String changePwd(String path, String username, String password) {
+    public String changePwd(String path, String username, String password, String role) {
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("username", username);
             jsonObject.put("password", password);
+            jsonObject.put("role", role);
         } catch (JSONException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
@@ -320,11 +323,12 @@ public class HttpUtils {
         return getData(path, jsonObject);
     }
 
-    public String saveStyle(String path, String username, String style) {
+    public String saveStyle(String path, String username, String style, String role) {
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("username", username);
             jsonObject.put("style", style);
+            jsonObject.put("role", role);
         } catch (JSONException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
@@ -332,10 +336,11 @@ public class HttpUtils {
         return getData(path, jsonObject);
     }
 
-    public String getStyle(String path, String username) {
+    public String getStyle(String path, String username, String role) {
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("username", username);
+            jsonObject.put("role", role);
         } catch (JSONException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();

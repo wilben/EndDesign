@@ -22,14 +22,14 @@ import com.wilben.enddesign.activity.AboutActivity;
 import com.wilben.enddesign.activity.ChangePwdActivity;
 import com.wilben.enddesign.activity.LoginActivity;
 import com.wilben.enddesign.activity.StyleActivity;
-import com.wilben.enddesign.activity.U_infoActivity;
+import com.wilben.enddesign.activity.InfoActivity;
 import com.wilben.enddesign.util.HttpUtils;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class U_MyFragment extends Fragment implements View.OnClickListener {
+public class MyFragment extends Fragment implements View.OnClickListener {
 
     private Button btn_exit;
     private RelativeLayout rl_info, rl_style, rl_resetpwd, rl_about;
@@ -38,24 +38,26 @@ public class U_MyFragment extends Fragment implements View.OnClickListener {
     private String username;
     private Bitmap bm = null;
     private ProgressDialog p;
+    private String role;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.u_myfragment, container, false);
+        View view = inflater.inflate(R.layout.myfragment, container, false);
         init(view);
         //从activity传过来的Bundle
         Bundle bundle = getArguments();
         if (bundle != null) {
             username = bundle.getString("username");
+            role = bundle.getString("role");
             tv_username.setText(username);
         }
         p = new ProgressDialog(getActivity());
         p.setMessage("加载中...");
         p.show();
         //获取用户头像
-        new AvatarAsyncTask().execute("Avatar", username);
+        new AvatarAsyncTask().execute("Avatar", username, role);
         return view;
     }
 
@@ -108,9 +110,10 @@ public class U_MyFragment extends Fragment implements View.OnClickListener {
                                 }).show();
                 break;
             case R.id.rl_info:
-                intent.setClass(getActivity(), U_infoActivity.class);
+                intent.setClass(getActivity(), InfoActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("username", username);
+                bundle.putString("role", role);
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;
@@ -118,6 +121,7 @@ public class U_MyFragment extends Fragment implements View.OnClickListener {
                 intent.setClass(getActivity(), ChangePwdActivity.class);
                 bundle = new Bundle();
                 bundle.putString("username", username);
+                bundle.putString("role", role);
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;
@@ -125,6 +129,7 @@ public class U_MyFragment extends Fragment implements View.OnClickListener {
                 intent.setClass(getActivity(), StyleActivity.class);
                 bundle = new Bundle();
                 bundle.putString("username", username);
+                bundle.putString("role", role);
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;
@@ -145,7 +150,7 @@ public class U_MyFragment extends Fragment implements View.OnClickListener {
         @Override
         protected Integer doInBackground(String... params) {
             try {
-                String avatarUrl = new HttpUtils().getAvatar(params[0], params[1]);
+                String avatarUrl = new HttpUtils().getAvatar(params[0], params[1], params[2]);
                 if (avatarUrl != null || !avatarUrl.equals("")) {
                     URL url = new URL(avatarUrl);
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();

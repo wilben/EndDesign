@@ -21,7 +21,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 
-public class U_infoActivity extends Activity {
+public class InfoActivity extends Activity {
 
     private ImageButton f_back;
     private User user;
@@ -31,18 +31,20 @@ public class U_infoActivity extends Activity {
     private Bundle bundle;
     private String username;
     private ProgressDialog p;
+    private String role;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.u_info);
+        setContentView(R.layout.info);
         bundle = this.getIntent().getExtras();
         username = bundle.getString("username");
+        role = bundle.getString("role");
         init();
         p = new ProgressDialog(this);
         p.setMessage("加载中...");
         p.show();
-        new getInfoAsyncTask().execute("Info", username);
+        new getInfoAsyncTask().execute("Info", username, role);
     }
 
     public void init() {
@@ -68,8 +70,9 @@ public class U_infoActivity extends Activity {
                 Intent intent = new Intent();
                 bundle = new Bundle();
                 bundle.putString("username", username);
+                bundle.putString("role", role);
                 intent.putExtras(bundle);
-                intent.setClass(U_infoActivity.this, U_editinfoActivity.class);
+                intent.setClass(InfoActivity.this, EditinfoActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -83,7 +86,7 @@ public class U_infoActivity extends Activity {
         protected Integer doInBackground(String... params) {
             try {
                 user = new User();
-                user = new SearchService().getInfo(params[0], params[1]);
+                user = new SearchService().getInfo(params[0], params[1], params[2]);
                 String avatarUrl = user.getAvatar();
                 if (avatarUrl != null || !avatarUrl.equals("")) {
                     URL url = new URL(avatarUrl);

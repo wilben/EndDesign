@@ -33,7 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class U_editinfoActivity extends Activity {
+public class EditinfoActivity extends Activity {
 
     private ImageButton f_back;
     private User user;
@@ -46,18 +46,20 @@ public class U_editinfoActivity extends Activity {
     private String imagePath; // 选择图片路径
     boolean uploadImg = false;
     private ProgressDialog p;
+    private String role;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.u_editinfo);
+        setContentView(R.layout.editinfo);
         bundle = this.getIntent().getExtras();
         username = bundle.getString("username");
+        role = bundle.getString("role");
         init();
         p = new ProgressDialog(this);
         p.setMessage("加载中...");
         p.show();
-        new getInfoAsyncTask().execute("Info", username);
+        new getInfoAsyncTask().execute("Info", username, role);
     }
 
     public void init() {
@@ -100,7 +102,7 @@ public class U_editinfoActivity extends Activity {
                                 uploadImg = false;
                             }
                         }
-                        user = new User(username, "", sex, age, avatar, realname, 0, "");
+                        user = new User(username, "", sex, age, avatar, realname, Integer.parseInt(role), "");
                         List<User> list = new ArrayList<User>();
                         list.add(user);
                         WriteJson writeJson = new WriteJson();
@@ -125,9 +127,9 @@ public class U_editinfoActivity extends Activity {
                     String msgobj = msg.obj.toString();
                     p.dismiss();
                     if (msgobj.equals("t")) {
-                        Toast.makeText(U_editinfoActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditinfoActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(U_editinfoActivity.this, "修改失败", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditinfoActivity.this, "修改失败", Toast.LENGTH_SHORT).show();
                     }
                     finish();
                     super.handleMessage(msg);
@@ -181,7 +183,7 @@ public class U_editinfoActivity extends Activity {
         protected Integer doInBackground(String... params) {
             try {
                 user = new User();
-                user = new SearchService().getInfo(params[0], params[1]);
+                user = new SearchService().getInfo(params[0], params[1], params[2]);
                 String avatarUrl = user.getAvatar();
                 if (avatarUrl != null || !avatarUrl.equals("")) {
                     URL url = new URL(avatarUrl);

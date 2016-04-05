@@ -10,7 +10,7 @@ import android.widget.RadioGroup;
 import com.wilben.enddesign.R;
 import com.wilben.enddesign.fragment.U_CaseFragment;
 import com.wilben.enddesign.fragment.U_DesignerFragment;
-import com.wilben.enddesign.fragment.U_MyFragment;
+import com.wilben.enddesign.fragment.MyFragment;
 import com.wilben.enddesign.fragment.U_ProjectFragment;
 
 public class U_MainActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener {
@@ -20,9 +20,10 @@ public class U_MainActivity extends FragmentActivity implements RadioGroup.OnChe
     private U_DesignerFragment designerFrament;
     private U_CaseFragment caseFragment;
     private U_ProjectFragment projectFragment;
-    private U_MyFragment myFragment;
+    private MyFragment myFragment;
     private RadioButton radio_case;
     private String username;
+    private String role;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class U_MainActivity extends FragmentActivity implements RadioGroup.OnChe
         Bundle bundle = this.getIntent().getExtras();
         //接收name值
         username = bundle.getString("username");
+        role = bundle.getString("role");
         changeFragment(0);
 
     }
@@ -70,6 +72,7 @@ public class U_MainActivity extends FragmentActivity implements RadioGroup.OnChe
                     projectFragment = new U_ProjectFragment();
                     Bundle bundle = new Bundle();
                     bundle.putString("username", username);
+                    bundle.putString("role", role);
                     projectFragment.setArguments(bundle);
                     beginTransaction.add(R.id.main_content, projectFragment);
                 } else {
@@ -78,9 +81,10 @@ public class U_MainActivity extends FragmentActivity implements RadioGroup.OnChe
                 break;
             case 3:
                 if (myFragment == null) {
-                    myFragment = new U_MyFragment();
+                    myFragment = new MyFragment();
                     Bundle bundle = new Bundle();
                     bundle.putString("username", username);
+                    bundle.putString("role", role);
                     myFragment.setArguments(bundle);
                     beginTransaction.add(R.id.main_content, myFragment);
                 } else {
