@@ -57,9 +57,11 @@ public class WorkAdapter extends BaseAdapter {
         Project workEntity = list.get(position);
         holder.tv_title.setText(workEntity.getTitle());
         // 使用ImageLoader加载网络图片
+        if (workEntity.getImage().equals(""))
+            workEntity.setImage("1");
         DisplayImageOptions options = new DisplayImageOptions.Builder()//
-                .showImageOnLoading(R.mipmap.ic_launcher) // 加载中显示的默认图片
-                .showImageOnFail(R.mipmap.ic_launcher) // 设置加载失败的默认图片
+                .showImageOnLoading(R.mipmap.none) // 加载中显示的默认图片
+                .showImageOnFail(R.mipmap.none) // 设置加载失败的默认图片
                 .cacheInMemory(true) // 内存缓存
                 .cacheOnDisk(true) // sdcard缓存
                 .bitmapConfig(Bitmap.Config.RGB_565)// 设置最低配置

@@ -1,20 +1,25 @@
 package com.wilben.enddesign.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.wilben.enddesign.NoScrollGridView;
 import com.wilben.enddesign.R;
 import com.wilben.enddesign.adapter.NoScrollGridAdapter;
 import com.wilben.enddesign.entity.Project;
 import com.wilben.enddesign.operation.SearchService;
+import com.wilben.enddesign.util.HttpUtils;
 
 import org.json.JSONException;
 
@@ -23,7 +28,7 @@ import java.util.ArrayList;
 /**
  * Created by wilben on 2016/4/2.
  */
-public class WorkDetailActivity extends Activity {
+public class WorkDetailActivity extends Activity implements View.OnClickListener {
 
     private NoScrollGridView gridView;
     private String workId;
@@ -33,13 +38,15 @@ public class WorkDetailActivity extends Activity {
     private ArrayList<String> imageList;
     private NoScrollGridAdapter adapter;
     private ProgressDialog p;
-    private TextView tv_title, tv_username, tv_time, tv_description, tv_state, tv_name;
+    private TextView tv_title, tv_username, tv_time, tv_description, tv_state, tv_name, tv_update;
     private ImageButton f_back;
+    private Button btn_accept, btn_cancel;
+    private String result = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.workdetail_entity);
+        setContentView(R.layout.workdetail);
         init();
         imageList = new ArrayList<String>();
         Bundle bundle = getIntent().getExtras();
@@ -68,16 +75,97 @@ public class WorkDetailActivity extends Activity {
         tv_state = (TextView) findViewById(R.id.tv_state);
         tv_name = (TextView) findViewById(R.id.tv_name);
         f_back = (ImageButton) findViewById(R.id.ib_back);
-        f_back.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                finish();
-            }
-        });
+        tv_update = (TextView) findViewById(R.id.tv_update);
+        btn_accept = (Button) findViewById(R.id.btn_accept);
+        btn_cancel = (Button) findViewById(R.id.btn_cancel);
+        f_back.setOnClickListener(this);
+        tv_update.setOnClickListener(this);
+        btn_accept.setOnClickListener(this);
+        btn_cancel.setOnClickListener(this);
         p = new ProgressDialog(this);
         p.setMessage("加载中...");
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.ib_back:
+                finish();
+                break;
+            case R.id.tv_update:
+                finish();
+                break;
+            case R.id.btn_accept:
+                new AlertDialog.Builder(this)
+                        .setTitle("确认接收项目吗？")
+                        .setIcon(android.R.drawable.ic_dialog_info)
+                        .setPositiveButton("确定",
+                                new DialogInterface.OnClickListener() {
+
+                                    @Override
+                                    public void onClick(DialogInterface dialog,
+                                                        int which) {
+                                        // 点击“确认”后的操作
+                                        new ChangeStateAsyncTask().execute("ChangeState", workId, "1");
+                                    }
+                                })
+                        .setNegativeButton("取消",
+                                new DialogInterface.OnClickListener() {
+
+                                    @Override
+                                    public void onClick(DialogInterface dialog,
+                                                        int which) {
+                                        // 点击“返回”后的操作,这里不设置没有任何操作
+                                    }
+                                }).show();
+                break;
+            case R.id.btn_cancel:
+                new AlertDialog.Builder(this)
+                        .setTitle("确认拒绝项目吗？")
+                        .setIcon(android.R.drawable.ic_dialog_info)
+                        .setPositiveButton("确定",
+                                new DialogInterface.OnClickListener() {
+
+                                    @Override
+                                    public void onClick(DialogInterface dialog,
+                                                        int which) {
+                                        // 点击“确认”后的操作
+                                        new ChangeStateAsyncTask().execute("ChangeState", workId, "-1");
+                                    }
+                                })
+                        .setNegativeButton("取消",
+                                new DialogInterface.OnClickListener() {
+
+                                    @Override
+                                    public void onClick(DialogInterface dialog,
+                                                        int which) {
+                                        // 点击“返回”后的操作,这里不设置没有任何操作
+                                    }
+                                }).show();
+                break;
+            default:
+                break;
+        }
+    }
+
+    class ChangeStateAsyncTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... params) {
+            result = new HttpUtils().changeState(params[0], params[1], params[2]);
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            p.dismiss();
+            if (result.equals("t")) {
+                Toast.makeText(WorkDetailActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(WorkDetailActivity.this, "修改失败", Toast.LENGTH_SHORT).show();
+            }
+            finish();
+        }
     }
 
 
@@ -109,9 +197,19 @@ public class WorkDetailActivity extends Activity {
             switch (project.getState()) {
                 case 0:
                     tv_state.setText("待设计");
+                    if (role.equals("1")) {
+                        btn_accept.setVisibility(View.VISIBLE);
+                        btn_cancel.setVisibility(View.VISIBLE);
+                    }
                     break;
                 case 1:
                     tv_state.setText("设计中");
+                    if (role.equals("1")) {
+                        tv_update.setVisibility(View.VISIBLE);
+                    }
+                    break;
+                case -1:
+                    tv_state.setText("已取消");
                     break;
                 case 2:
                     tv_state.setText("已完成");

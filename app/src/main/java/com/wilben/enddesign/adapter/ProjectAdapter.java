@@ -83,6 +83,9 @@ public class ProjectAdapter extends BaseAdapter {
             case 2:
                 holder.tv_state.setText("已完成");
                 break;
+            case -1:
+                holder.tv_state.setText("已取消");
+                break;
             default:
                 break;
         }

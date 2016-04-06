@@ -28,7 +28,7 @@
             android:id="@+id/radio_project"
             style="@style/radio_btn"
             android:drawableTop="@drawable/rbtn_m2_selector"
-            android:text="订单" />
+            android:text="项目" />
 
         <RadioButton
             android:id="@+id/radio_my"

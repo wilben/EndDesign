@@ -31,6 +31,7 @@ public class WorkActivity extends Activity {
     private int[] ID;
     private int[] State;
     private ImageButton f_back;
+    private String role;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class WorkActivity extends Activity {
         setContentView(R.layout.work_grid);
         final Bundle bundle = getIntent().getExtras();
         username = bundle.getString("username");
+        role = bundle.getString("role");
         gridView = (GridView) findViewById(R.id.gv_work);
         listWork = new ArrayList<Project>();
         adapter = new WorkAdapter(this, listWork);
@@ -60,6 +62,7 @@ public class WorkActivity extends Activity {
                 Bundle bundle1 = new Bundle();
                 bundle1.putString("workId", String.valueOf(ID[position]));
                 bundle1.putString("state", String.valueOf(State[position]));
+                bundle1.putString("role", role);
                 intent.putExtras(bundle1);
                 intent.setClass(WorkActivity.this, WorkDetailActivity.class);
                 startActivity(intent);

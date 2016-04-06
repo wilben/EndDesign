@@ -45,6 +45,7 @@ public class U_DesignerFragment extends Fragment {
     private Intent intent;
     private String username;
     private String user;
+    private String role;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,6 +63,7 @@ public class U_DesignerFragment extends Fragment {
         bundle = getArguments();
         if (bundle != null) {
             user = bundle.getString("user");
+            role = bundle.getString("role");
         }
         listDesigner = new ArrayList<Designer>();
         adapter = new ListDesignerAdapter(getActivity(), listDesigner);
@@ -76,6 +78,7 @@ public class U_DesignerFragment extends Fragment {
                 bundle = new Bundle();
                 bundle.putString("username", username);
                 bundle.putString("user", user);
+                bundle.putString("role", role);
                 intent = new Intent();
                 intent.setClass(getActivity(), DesignerDetailActivity.class);
                 intent.putExtras(bundle);

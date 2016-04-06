@@ -52,6 +52,7 @@ public class U_MainActivity extends FragmentActivity implements RadioGroup.OnChe
                     designerFrament = new U_DesignerFragment();
                     Bundle bundle = new Bundle();
                     bundle.putString("user", username);
+                    bundle.putString("role", role);
                     designerFrament.setArguments(bundle);
                     beginTransaction.add(R.id.main_content, designerFrament);
                 } else {

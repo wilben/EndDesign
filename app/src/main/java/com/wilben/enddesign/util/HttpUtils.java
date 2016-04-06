@@ -349,4 +349,16 @@ public class HttpUtils {
         }
         return getData(path, jsonObject);
     }
+
+    public String changeState(String path, String workId, String state) {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("workId", workId);
+            jsonObject.put("state", state);
+        } catch (JSONException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        return getData(path, jsonObject);
+    }
 }

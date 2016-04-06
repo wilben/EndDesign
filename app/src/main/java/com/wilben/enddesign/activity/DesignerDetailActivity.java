@@ -41,6 +41,7 @@ public class DesignerDetailActivity extends Activity {
     private Bundle bundle;
     private Intent intent;
     private ImageButton f_back;
+    private String role;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,7 @@ public class DesignerDetailActivity extends Activity {
         Bundle bundle = getIntent().getExtras();
         username = bundle.getString("username");
         user = bundle.getString("user");
+        role = bundle.getString("role");
         p.show();
         new getDesignerDetail().execute("DesignerDetail", username);
     }
@@ -81,6 +83,7 @@ public class DesignerDetailActivity extends Activity {
             public void onClick(View v) {
                 bundle = new Bundle();
                 bundle.putString("username", designer.getUsername());
+                bundle.putString("role", role);
                 intent = new Intent();
                 intent.putExtras(bundle);
                 intent.setClass(DesignerDetailActivity.this, WorkActivity.class);
