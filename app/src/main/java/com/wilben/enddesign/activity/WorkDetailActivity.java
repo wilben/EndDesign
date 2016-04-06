@@ -40,8 +40,9 @@ public class WorkDetailActivity extends Activity implements View.OnClickListener
     private ProgressDialog p;
     private TextView tv_title, tv_username, tv_time, tv_description, tv_state, tv_name, tv_update;
     private ImageButton f_back;
-    private Button btn_accept, btn_cancel;
+    private Button btn_accept, btn_cancel, btn_confirm;
     private String result = "";
+    private Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,7 @@ public class WorkDetailActivity extends Activity implements View.OnClickListener
         setContentView(R.layout.workdetail);
         init();
         imageList = new ArrayList<String>();
-        Bundle bundle = getIntent().getExtras();
+        bundle = getIntent().getExtras();
         workId = bundle.getString("workId");
         state = bundle.getString("state");
         role = bundle.getString("role");
@@ -78,6 +79,8 @@ public class WorkDetailActivity extends Activity implements View.OnClickListener
         tv_update = (TextView) findViewById(R.id.tv_update);
         btn_accept = (Button) findViewById(R.id.btn_accept);
         btn_cancel = (Button) findViewById(R.id.btn_cancel);
+        btn_confirm = (Button) findViewById(R.id.btn_confirm);
+        btn_confirm.setOnClickListener(this);
         f_back.setOnClickListener(this);
         tv_update.setOnClickListener(this);
         btn_accept.setOnClickListener(this);
@@ -93,7 +96,39 @@ public class WorkDetailActivity extends Activity implements View.OnClickListener
                 finish();
                 break;
             case R.id.tv_update:
+                Intent intent = new Intent();
+                bundle = new Bundle();
+                bundle.putString("workId", workId);
+                bundle.putString("title", project.getTitle());
+                bundle.putString("description", project.getDescription());
+                intent.putExtras(bundle);
+                intent.setClass(WorkDetailActivity.this, UpdateProjectActivity.class);
+                startActivity(intent);
                 finish();
+                break;
+            case R.id.btn_confirm:
+                new AlertDialog.Builder(this)
+                        .setTitle("确认完成项目吗？")
+                        .setIcon(android.R.drawable.ic_dialog_info)
+                        .setPositiveButton("确定",
+                                new DialogInterface.OnClickListener() {
+
+                                    @Override
+                                    public void onClick(DialogInterface dialog,
+                                                        int which) {
+                                        // 点击“确认”后的操作
+                                        new ChangeStateAsyncTask().execute("ChangeState", workId, "2");
+                                    }
+                                })
+                        .setNegativeButton("取消",
+                                new DialogInterface.OnClickListener() {
+
+                                    @Override
+                                    public void onClick(DialogInterface dialog,
+                                                        int which) {
+                                        // 点击“返回”后的操作,这里不设置没有任何操作
+                                    }
+                                }).show();
                 break;
             case R.id.btn_accept:
                 new AlertDialog.Builder(this)
@@ -206,6 +241,7 @@ public class WorkDetailActivity extends Activity implements View.OnClickListener
                     tv_state.setText("设计中");
                     if (role.equals("1")) {
                         tv_update.setVisibility(View.VISIBLE);
+                        btn_confirm.setVisibility(View.VISIBLE);
                     }
                     break;
                 case -1:

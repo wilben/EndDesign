@@ -361,4 +361,15 @@ public class HttpUtils {
         }
         return getData(path, jsonObject);
     }
+
+    public String updateProject(String path, String jsonString) {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("jsonString", jsonString);
+        } catch (JSONException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        return getData(path, jsonObject);
+    }
 }

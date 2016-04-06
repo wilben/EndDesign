@@ -14,6 +14,7 @@ import android.os.Message;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -37,7 +38,8 @@ public class EditinfoActivity extends Activity {
 
     private ImageButton f_back;
     private User user;
-    private TextView tv_username, et_realname, et_age, et_sex, tv_save;
+    private TextView tv_username, tv_save;
+    private EditText et_realname, et_age, et_sex;
     private ImageView iv_avatar;
     private Bitmap bm = null;
     private Bundle bundle;
@@ -65,9 +67,9 @@ public class EditinfoActivity extends Activity {
     public void init() {
 
         tv_username = (TextView) findViewById(R.id.tv_username);
-        et_realname = (TextView) findViewById(R.id.et_realname);
-        et_age = (TextView) findViewById(R.id.et_age);
-        et_sex = (TextView) findViewById(R.id.et_sex);
+        et_realname = (EditText) findViewById(R.id.et_realname);
+        et_age = (EditText) findViewById(R.id.et_age);
+        et_sex = (EditText) findViewById(R.id.et_sex);
         iv_avatar = (ImageView) findViewById(R.id.iv_avatar);
         tv_save = (TextView) findViewById(R.id.tv_save);
         f_back = (ImageButton) findViewById(R.id.ib_back);

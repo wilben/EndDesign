@@ -61,6 +61,7 @@
         <activity android:name=".activity.LaunchProjectActivity"></activity>
         <activity android:name=".activity.StyleActivity"></activity>
         <activity android:name=".activity.AboutActivity"></activity>
+        <activity android:name=".activity.UpdateProjectActivity"></activity>
     </application>
 
 </manifest>

@@ -186,11 +186,22 @@
         android:stretchMode="columnWidth"
         android:verticalSpacing="2.5dp" />
 
+    <Button
+        android:id="@+id/btn_confirm"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/exit"
+        android:text="完成项目"
+        android:textSize="20dp"
+
+        android:visibility="invisible" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="#ffffff"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
