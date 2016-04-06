@@ -14,28 +14,32 @@ import com.wilben.enddesign.R;
 import com.wilben.enddesign.activity.MyProjectActivity;
 import com.wilben.enddesign.adapter.ImageAdapter;
 
-public class U_ProjectFragment extends Fragment {
+public class ProjectFragment extends Fragment {
 
     private String username;
+    private String role;
     private GridView gv_project;
     private ListAdapter listAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.u_projectfragment, container, false);
+        View view = inflater.inflate(R.layout.projectfragment, container, false);
         Bundle bundle = getArguments();
         if (bundle != null) {
             username = bundle.getString("username");
+            role = bundle.getString("role");
         }
         init(view);
         gv_project.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getContext(), MyProjectActivity.class);
+                Intent intent = new Intent();
+                intent.setClass(getContext(), MyProjectActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("username", username);
                 bundle.putString("position", String.valueOf(position));
+                bundle.putString("role", role);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }

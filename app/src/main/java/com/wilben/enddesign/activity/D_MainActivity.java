@@ -8,14 +8,14 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.wilben.enddesign.R;
-import com.wilben.enddesign.fragment.D_ProjectFragment;
 import com.wilben.enddesign.fragment.MyFragment;
+import com.wilben.enddesign.fragment.ProjectFragment;
 
 public class D_MainActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener {
 
     private RadioGroup radioGroup;
     private FragmentManager fragmentManager;
-    private D_ProjectFragment projectFragment;
+    private ProjectFragment projectFragment;
     private MyFragment myFragment;
     private RadioButton radio_project;
     private String username;
@@ -27,15 +27,14 @@ public class D_MainActivity extends FragmentActivity implements RadioGroup.OnChe
         setContentView(R.layout.d_main);
         radioGroup = (RadioGroup) findViewById(R.id.radiogroup);
         radioGroup.setOnCheckedChangeListener(this);
-        fragmentManager = getSupportFragmentManager();
         radio_project = (RadioButton) findViewById(R.id.radio_project);
-        radio_project.setChecked(true);
+        fragmentManager = getSupportFragmentManager();
         radioGroup.setOnCheckedChangeListener(this);
         Bundle bundle = this.getIntent().getExtras();
         //接收name值
         username = bundle.getString("username");
         role = bundle.getString("role");
-        changeFragment(0);
+        radio_project.setChecked(true);
     }
 
     private void changeFragment(int index) {
@@ -44,7 +43,11 @@ public class D_MainActivity extends FragmentActivity implements RadioGroup.OnChe
         switch (index) {
             case 0:
                 if (projectFragment == null) {
-                    projectFragment = new D_ProjectFragment();
+                    projectFragment = new ProjectFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("username", username);
+                    bundle.putString("role", role);
+                    projectFragment.setArguments(bundle);
                     beginTransaction.add(R.id.main_content, projectFragment);
                 } else {
                     beginTransaction.show(projectFragment);

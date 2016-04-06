@@ -28,11 +28,12 @@ public class WorkDetailActivity extends Activity {
     private NoScrollGridView gridView;
     private String workId;
     private String state;
+    private String role;
     private Project project;
     private ArrayList<String> imageList;
     private NoScrollGridAdapter adapter;
     private ProgressDialog p;
-    private TextView tv_title, tv_username, tv_time, tv_description, tv_state;
+    private TextView tv_title, tv_username, tv_time, tv_description, tv_state, tv_name;
     private ImageButton f_back;
 
     @Override
@@ -44,6 +45,7 @@ public class WorkDetailActivity extends Activity {
         Bundle bundle = getIntent().getExtras();
         workId = bundle.getString("workId");
         state = bundle.getString("state");
+        role = bundle.getString("role");
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -64,6 +66,7 @@ public class WorkDetailActivity extends Activity {
         tv_time = (TextView) findViewById(R.id.tv_time);
         tv_description = (TextView) findViewById(R.id.tv_description);
         tv_state = (TextView) findViewById(R.id.tv_state);
+        tv_name = (TextView) findViewById(R.id.tv_name);
         f_back = (ImageButton) findViewById(R.id.ib_back);
         f_back.setOnClickListener(new View.OnClickListener() {
 
@@ -94,8 +97,13 @@ public class WorkDetailActivity extends Activity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             p.dismiss();
+            if (role.equals("0")) {
+                tv_username.setText(project.getDesignername());
+            } else {
+                tv_name.setText("客户");
+                tv_username.setText(project.getUsername());
+            }
             tv_title.setText(project.getTitle());
-            tv_username.setText(project.getUsername());
             tv_time.setText(project.getTime());
             tv_description.setText(project.getDescription());
             switch (project.getState()) {

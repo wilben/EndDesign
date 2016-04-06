@@ -25,6 +25,7 @@ public class MyProjectActivity extends Activity {
 
     private String username;
     private String position;
+    private String role;
     /**
      * Item数据实体集合
      */
@@ -46,9 +47,10 @@ public class MyProjectActivity extends Activity {
         Bundle bundle = getIntent().getExtras();
         username = bundle.getString("username");
         position = bundle.getString("position");
+        role = bundle.getString("role");
         listview = (ListView) findViewById(R.id.listview);
         projectList = new ArrayList<Project>();
-        adapter = new ProjectAdapter(this, projectList);
+        adapter = new ProjectAdapter(this, projectList,role);
         listview.setAdapter(adapter);
         f_back = (ImageButton) findViewById(R.id.ib_back);
         f_back.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +64,7 @@ public class MyProjectActivity extends Activity {
         p = new ProgressDialog(this);
         p.setMessage("加载中...");
         p.show();
-        new ProjectAsyncTask().execute("Project", username, position);
+        new ProjectAsyncTask().execute("Project", username, position, role);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -70,6 +72,7 @@ public class MyProjectActivity extends Activity {
                 Bundle bundle = new Bundle();
                 bundle.putString("workId", String.valueOf(ID[position]));
                 bundle.putString("state", String.valueOf(State[position]));
+                bundle.putString("role", role);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
@@ -82,7 +85,7 @@ public class MyProjectActivity extends Activity {
         @Override
         protected String doInBackground(String... params) {
             try {
-                projectList = new SearchService().getProject(params[0], params[1], params[2], projectList);
+                projectList = new SearchService().getProject(params[0], params[1], params[2], params[3], projectList);
                 ID = new int[projectList.size()];
                 State = new int[projectList.size()];
                 for (int i = 0; i < projectList.size(); i++) {

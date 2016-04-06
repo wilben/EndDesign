@@ -8,10 +8,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.wilben.enddesign.R;
+import com.wilben.enddesign.fragment.MyFragment;
+import com.wilben.enddesign.fragment.ProjectFragment;
 import com.wilben.enddesign.fragment.U_CaseFragment;
 import com.wilben.enddesign.fragment.U_DesignerFragment;
-import com.wilben.enddesign.fragment.MyFragment;
-import com.wilben.enddesign.fragment.U_ProjectFragment;
 
 public class U_MainActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener {
 
@@ -19,7 +19,7 @@ public class U_MainActivity extends FragmentActivity implements RadioGroup.OnChe
     private FragmentManager fragmentManager;
     private U_DesignerFragment designerFrament;
     private U_CaseFragment caseFragment;
-    private U_ProjectFragment projectFragment;
+    private ProjectFragment projectFragment;
     private MyFragment myFragment;
     private RadioButton radio_case;
     private String username;
@@ -33,14 +33,13 @@ public class U_MainActivity extends FragmentActivity implements RadioGroup.OnChe
         radioGroup.setOnCheckedChangeListener(this);
         fragmentManager = getSupportFragmentManager();
         radio_case = (RadioButton) findViewById(R.id.radio_case);
-        radio_case.setChecked(true);
         radioGroup.setOnCheckedChangeListener(this);
         //新页面接收数据
         Bundle bundle = this.getIntent().getExtras();
         //接收name值
         username = bundle.getString("username");
         role = bundle.getString("role");
-        changeFragment(0);
+        radio_case.setChecked(true);
 
     }
 
@@ -69,7 +68,7 @@ public class U_MainActivity extends FragmentActivity implements RadioGroup.OnChe
                 break;
             case 2:
                 if (projectFragment == null) {
-                    projectFragment = new U_ProjectFragment();
+                    projectFragment = new ProjectFragment();
                     Bundle bundle = new Bundle();
                     bundle.putString("username", username);
                     bundle.putString("role", role);

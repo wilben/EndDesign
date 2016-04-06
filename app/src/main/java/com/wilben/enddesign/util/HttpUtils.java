@@ -243,6 +243,7 @@ public class HttpUtils {
                         bos.write(buffer, 0, len);
                     }
                     s = bos.toString();
+                    s = s.substring(0, s.length() - 2);
                     bos.close();
                     is.close();
                 }
@@ -300,11 +301,12 @@ public class HttpUtils {
         return getData(path, jsonObject);
     }
 
-    public String getProject(String path, String username, String position) {
+    public String getProject(String path, String username, String position, String role) {
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("username", username);
             jsonObject.put("position", position);
+            jsonObject.put("role", role);
         } catch (JSONException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();

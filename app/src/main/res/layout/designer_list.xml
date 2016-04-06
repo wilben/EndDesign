@@ -9,7 +9,6 @@
         android:id="@+id/iv_avatar"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:background="@mipmap/default_avatar"
         android:scaleType="centerCrop" />
 
     <TextView

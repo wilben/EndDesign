@@ -24,10 +24,12 @@ public class ProjectAdapter extends BaseAdapter {
 
     private Context mContext;
     private List<Project> items;
+    private String role;
 
-    public ProjectAdapter(Context ctx, List<Project> items) {
+    public ProjectAdapter(Context ctx, List<Project> items, String role) {
         this.mContext = ctx;
         this.items = items;
+        this.role = role;
     }
 
 
@@ -53,16 +55,22 @@ public class ProjectAdapter extends BaseAdapter {
             holder = new ViewHolder();
             convertView = View.inflate(mContext, R.layout.project_list, null);
             holder.iv_image = (ImageView) convertView.findViewById(R.id.iv_image);
-            holder.tv_username = (TextView) convertView.findViewById(R.id.tv_username);
             holder.tv_title = (TextView) convertView.findViewById(R.id.tv_title);
             holder.tv_time = (TextView) convertView.findViewById(R.id.tv_time);
             holder.tv_state = (TextView) convertView.findViewById(R.id.tv_state);
+            holder.tv_name = (TextView) convertView.findViewById(R.id.tv_name);
+            holder.tv_username = (TextView) convertView.findViewById(R.id.tv_username);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
         Project itemEntity = items.get(position);
-        holder.tv_username.setText(itemEntity.getUsername());
+        if (role.equals("1")) {
+            holder.tv_username.setText(itemEntity.getUsername());
+            holder.tv_name.setText("客户");
+        } else {
+            holder.tv_username.setText(itemEntity.getDesignername());
+        }
         holder.tv_title.setText(itemEntity.getTitle());
         holder.tv_time.setText(itemEntity.getTime());
         switch (itemEntity.getState()) {
@@ -79,9 +87,11 @@ public class ProjectAdapter extends BaseAdapter {
                 break;
         }
         // 使用ImageLoader加载网络图片
+        if (itemEntity.getImage().equals(""))
+            itemEntity.setImage("1");
         DisplayImageOptions options = new DisplayImageOptions.Builder()//
-                .showImageOnLoading(R.mipmap.ic_launcher) // 加载中显示的默认图片
-                .showImageOnFail(R.mipmap.ic_launcher) // 设置加载失败的默认图片
+                .showImageOnLoading(R.mipmap.none) // 加载中显示的默认图片
+                .showImageOnFail(R.mipmap.none) // 设置加载失败的默认图片
                 .cacheInMemory(true) // 内存缓存
                 .cacheOnDisk(true) // sdcard缓存
                 .bitmapConfig(Config.RGB_565)// 设置最低配置
@@ -102,5 +112,6 @@ public class ProjectAdapter extends BaseAdapter {
         private TextView tv_username;
         private TextView tv_time;
         private TextView tv_state;
+        private TextView tv_name;
     }
 }

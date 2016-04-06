@@ -70,9 +70,11 @@ public class ListCaseAdapter extends BaseAdapter {
         holder.tv_username.setText(itemEntity.getUsername());
         holder.tv_description.setText(itemEntity.getDescription());
         // 使用ImageLoader加载网络图片
+        if (itemEntity.getImage().equals(""))
+            itemEntity.setImage("1");
         DisplayImageOptions options = new DisplayImageOptions.Builder()//
-                .showImageOnLoading(R.mipmap.ic_launcher) // 加载中显示的默认图片
-                .showImageOnFail(R.mipmap.ic_launcher) // 设置加载失败的默认图片
+                .showImageOnLoading(R.mipmap.default_avatar) // 加载中显示的默认图片
+                .showImageOnFail(R.mipmap.default_avatar) // 设置加载失败的默认图片
                 .cacheInMemory(true) // 内存缓存
                 .cacheOnDisk(true) // sdcard缓存
                 .bitmapConfig(Config.RGB_565)// 设置最低配置

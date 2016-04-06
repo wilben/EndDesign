@@ -114,6 +114,7 @@ public class SearchService {
         Project project = new Project();
         project.setTitle(jsonObject.getString("title"));
         project.setUsername(jsonObject.getString("username"));
+        project.setDesignername(jsonObject.getString("designername"));
         project.setTime(jsonObject.getString("time"));
         project.setDescription(jsonObject.getString("description"));
         project.setState(jsonObject.getInt("state"));
@@ -129,8 +130,8 @@ public class SearchService {
         return project;
     }
 
-    public List<Project> getProject(String path, String username, String position, List<Project> projectList) throws JSONException {
-        String s = new HttpUtils().getProject(path, username, position);
+    public List<Project> getProject(String path, String username, String position, String role, List<Project> projectList) throws JSONException {
+        String s = new HttpUtils().getProject(path, username, position, role);
         JSONObject jsonObject1 = new JSONObject(s);
         //返回json的数组
         JSONArray jsonArray = jsonObject1.getJSONArray("projects");
@@ -141,6 +142,7 @@ public class SearchService {
             project.setTitle(jsonObject.getString("title"));
             project.setTime(jsonObject.getString("time"));
             project.setUsername(jsonObject.getString("username"));
+            project.setDesignername(jsonObject.getString("designername"));
             project.setWorkId(jsonObject.getInt("workId"));
             project.setState(jsonObject.getInt("state"));
             projectList.add(project);
