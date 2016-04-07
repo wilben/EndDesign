@@ -150,4 +150,20 @@ public class SearchService {
         return projectList;
     }
 
+    public List<Designer> searchDesigner(String path, String content, List<Designer> designerList) throws JSONException {
+        String s = new HttpUtils().getDesigner(path, content);
+        JSONObject jsonObject1 = new JSONObject(s);
+        //返回json的数组
+        JSONArray jsonArray = jsonObject1.getJSONArray("searchDesigner");
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            Designer designer = new Designer();
+            designer.setAvatar(jsonObject.getString("avatar"));
+            designer.setUsername(jsonObject.getString("username"));
+            designer.setArea(jsonObject.getString("area"));
+            designer.setStyle(jsonObject.getString("style"));
+            designerList.add(designer);
+        }
+        return designerList;
+    }
 }

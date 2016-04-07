@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.wilben.enddesign.R;
 import com.wilben.enddesign.activity.DesignerDetailActivity;
+import com.wilben.enddesign.activity.SearchActivity;
 import com.wilben.enddesign.adapter.ListDesignerAdapter;
 import com.wilben.enddesign.entity.Designer;
 import com.wilben.enddesign.operation.SearchService;
@@ -46,6 +48,7 @@ public class U_DesignerFragment extends Fragment {
     private String username;
     private String user;
     private String role;
+    private ImageView iv_search;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,7 @@ public class U_DesignerFragment extends Fragment {
         View view = inflater.inflate(R.layout.u_designerfragment, container, false);
         listview = (ListView) view.findViewById(R.id.listview);
         local_city = (TextView) view.findViewById(R.id.local_city);
+        iv_search = (ImageView) view.findViewById(R.id.iv_search);
         getlocation();
         bundle = getArguments();
         if (bundle != null) {
@@ -81,6 +85,18 @@ public class U_DesignerFragment extends Fragment {
                 bundle.putString("role", role);
                 intent = new Intent();
                 intent.setClass(getActivity(), DesignerDetailActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+        iv_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent();
+                intent.setClass(getActivity(), SearchActivity.class);
+                bundle = new Bundle();
+                bundle.putString("user", user);
+                bundle.putString("role", role);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }

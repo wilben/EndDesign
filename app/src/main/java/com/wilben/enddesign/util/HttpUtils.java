@@ -372,4 +372,15 @@ public class HttpUtils {
         }
         return getData(path, jsonObject);
     }
+
+    public String getDesigner(String path, String content) {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("content", content);
+        } catch (JSONException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        return getData(path, jsonObject);
+    }
 }
