@@ -55,6 +55,9 @@ public class UpdateProjectActivity extends Activity {
     private String uploadFile = "";
     private ArrayList<String> imageUrls;
     private String result;
+    private String position;
+    private String username;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +66,8 @@ public class UpdateProjectActivity extends Activity {
         bundle = this.getIntent().getExtras();
         workId = bundle.getString("workId");
         title = bundle.getString("title");
+        username = bundle.getString("username");
+        position = bundle.getString("position");
         description = bundle.getString("description");
         imageUrls = new ArrayList<>();
         init();
@@ -125,7 +130,7 @@ public class UpdateProjectActivity extends Activity {
                     Toast.makeText(UpdateProjectActivity.this, "添加图片",
                             Toast.LENGTH_SHORT).show();
                     // 选择图片
-                    Intent intent = new Intent(
+                    intent = new Intent(
                             Intent.ACTION_PICK,
                             android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     startActivityForResult(intent, IMAGE_OPEN);
@@ -152,6 +157,14 @@ public class UpdateProjectActivity extends Activity {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
+                intent = new Intent();
+                bundle = new Bundle();
+                bundle.putString("position", position);
+                bundle.putString("role", "1");
+                bundle.putString("username", username);
+                intent.putExtras(bundle);
+                intent.setClass(UpdateProjectActivity.this, MyProjectActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
@@ -214,6 +227,14 @@ public class UpdateProjectActivity extends Activity {
             } else {
                 Toast.makeText(UpdateProjectActivity.this, "上传失败", Toast.LENGTH_SHORT).show();
             }
+            intent = new Intent();
+            bundle = new Bundle();
+            bundle.putString("position", position);
+            bundle.putString("role", "1");
+            bundle.putString("username", username);
+            intent.putExtras(bundle);
+            intent.setClass(UpdateProjectActivity.this, MyProjectActivity.class);
+            startActivity(intent);
             finish();
             super.handleMessage(msg);
         }

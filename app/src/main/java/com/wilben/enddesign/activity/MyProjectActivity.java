@@ -50,7 +50,7 @@ public class MyProjectActivity extends Activity {
         role = bundle.getString("role");
         listview = (ListView) findViewById(R.id.listview);
         projectList = new ArrayList<Project>();
-        adapter = new ProjectAdapter(this, projectList,role);
+        adapter = new ProjectAdapter(this, projectList, role);
         listview.setAdapter(adapter);
         f_back = (ImageButton) findViewById(R.id.ib_back);
         f_back.setOnClickListener(new View.OnClickListener() {
@@ -67,14 +67,17 @@ public class MyProjectActivity extends Activity {
         new ProjectAsyncTask().execute("Project", username, position, role);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int pt, long id) {
                 Intent intent = new Intent(MyProjectActivity.this, WorkDetailActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("workId", String.valueOf(ID[position]));
-                bundle.putString("state", String.valueOf(State[position]));
+                bundle.putString("workId", String.valueOf(ID[pt]));
+                bundle.putString("state", String.valueOf(State[pt]));
                 bundle.putString("role", role);
+                bundle.putString("position", position);
+                bundle.putString("flag","t");
                 intent.putExtras(bundle);
                 startActivity(intent);
+                finish();
             }
         });
     }

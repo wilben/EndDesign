@@ -42,7 +42,10 @@ public class WorkDetailActivity extends Activity implements View.OnClickListener
     private ImageButton f_back;
     private Button btn_accept, btn_cancel, btn_confirm;
     private String result = "";
+    private String position;
     private Bundle bundle;
+    private Intent intent;
+    private String flag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,8 @@ public class WorkDetailActivity extends Activity implements View.OnClickListener
         workId = bundle.getString("workId");
         state = bundle.getString("state");
         role = bundle.getString("role");
+        position = bundle.getString("position");
+        flag = bundle.getString("flag");
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -93,14 +98,30 @@ public class WorkDetailActivity extends Activity implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ib_back:
+                if (flag.equals("t")) {
+                    intent = new Intent();
+                    bundle = new Bundle();
+                    bundle.putString("position", position);
+                    bundle.putString("role", role);
+                    if (role.equals("1")) {
+                        bundle.putString("username", project.getDesignername());
+                    } else {
+                        bundle.putString("username", project.getUsername());
+                    }
+                    intent.putExtras(bundle);
+                    intent.setClass(WorkDetailActivity.this, MyProjectActivity.class);
+                    startActivity(intent);
+                }
                 finish();
                 break;
             case R.id.tv_update:
-                Intent intent = new Intent();
+                intent = new Intent();
                 bundle = new Bundle();
                 bundle.putString("workId", workId);
                 bundle.putString("title", project.getTitle());
                 bundle.putString("description", project.getDescription());
+                bundle.putString("position", position);
+                bundle.putString("username", project.getDesignername());
                 intent.putExtras(bundle);
                 intent.setClass(WorkDetailActivity.this, UpdateProjectActivity.class);
                 startActivity(intent);
@@ -199,6 +220,18 @@ public class WorkDetailActivity extends Activity implements View.OnClickListener
             } else {
                 Toast.makeText(WorkDetailActivity.this, "修改失败", Toast.LENGTH_SHORT).show();
             }
+            intent = new Intent();
+            bundle = new Bundle();
+            bundle.putString("position", position);
+            bundle.putString("role", role);
+            if (role.equals("1")) {
+                bundle.putString("username", project.getDesignername());
+            } else {
+                bundle.putString("username", project.getUsername());
+            }
+            intent.putExtras(bundle);
+            intent.setClass(WorkDetailActivity.this, MyProjectActivity.class);
+            startActivity(intent);
             finish();
         }
     }
@@ -234,8 +267,8 @@ public class WorkDetailActivity extends Activity implements View.OnClickListener
                     tv_state.setText("待设计");
                     if (role.equals("1")) {
                         btn_accept.setVisibility(View.VISIBLE);
-                        btn_cancel.setVisibility(View.VISIBLE);
                     }
+                    btn_cancel.setVisibility(View.VISIBLE);
                     break;
                 case 1:
                     tv_state.setText("设计中");

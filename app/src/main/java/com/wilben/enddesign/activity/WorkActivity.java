@@ -63,6 +63,7 @@ public class WorkActivity extends Activity {
                 bundle1.putString("workId", String.valueOf(ID[position]));
                 bundle1.putString("state", String.valueOf(State[position]));
                 bundle1.putString("role", role);
+                bundle1.putString("flag", "f");
                 intent.putExtras(bundle1);
                 intent.setClass(WorkActivity.this, WorkDetailActivity.class);
                 startActivity(intent);

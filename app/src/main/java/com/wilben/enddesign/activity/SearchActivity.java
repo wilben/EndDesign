@@ -95,6 +95,7 @@ public class SearchActivity extends Activity implements View.OnClickListener {
                 if (content.length() <= 0) {
                     return;
                 } else {
+                    p.show();
                     new SearchDesignerAsyncTask().execute("SearchDesigner", content);
                 }
                 break;

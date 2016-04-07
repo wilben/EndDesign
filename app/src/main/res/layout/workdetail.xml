@@ -221,7 +221,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
-            android:text="拒绝项目"
+            android:text="取消项目"
             android:visibility="invisible" />
 
     </LinearLayout>
