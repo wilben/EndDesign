@@ -58,8 +58,26 @@ public class SearchService {
         return designerList;
     }
 
-    public User getInfo(String path, String username, String role) throws Exception {
-        String s = new HttpUtils().getU_info(path, username, role);
+    public Designer getD_Info(String path, String username) throws Exception {
+        String s = new HttpUtils().getInfo(path, username);
+
+        JSONObject jsonObject1 = new JSONObject(s);
+        JSONObject jsonObject = jsonObject1.getJSONObject("info");
+        Designer designer = new Designer();
+        designer.setUsername(jsonObject.getString("username"));
+        designer.setRealname(jsonObject.getString("realname"));
+        designer.setAge(jsonObject.getString("age"));
+        designer.setSex(jsonObject.getString("sex"));
+        designer.setAvatar(jsonObject.getString("avatar"));
+        designer.setConcept(jsonObject.getString("concept"));
+        designer.setMotto(jsonObject.getString("motto"));
+        designer.setWork(jsonObject.getString("work"));
+        designer.setArea(jsonObject.getString("area"));
+        return designer;
+    }
+
+    public User getU_Info(String path, String username) throws Exception {
+        String s = new HttpUtils().getInfo(path, username);
 
         JSONObject jsonObject1 = new JSONObject(s);
         JSONObject jsonObject = jsonObject1.getJSONObject("info");

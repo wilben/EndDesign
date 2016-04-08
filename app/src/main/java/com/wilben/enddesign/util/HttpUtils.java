@@ -133,11 +133,10 @@ public class HttpUtils {
         return s;
     }
 
-    public String getU_info(String path, String username, String role) {
+    public String getInfo(String path, String username) {
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("username", username);
-            jsonObject.put("role", role);
         } catch (JSONException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();

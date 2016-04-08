@@ -130,11 +130,16 @@ public class U_DesignerFragment extends Fragment {
     public class MyLocationListener implements BDLocationListener {
         @Override
         public void onReceiveLocation(BDLocation location) {
-            if (location == null)
+            if (location == null) {
                 return;
+            }
             String cityString = location.getCity();
-            cityString = cityString.substring(0, cityString.indexOf("市"));
-            local_city.setText(cityString);
+            if (cityString != null) {
+                cityString = cityString.substring(0, cityString.indexOf("市"));
+                local_city.setText(cityString);
+            } else {
+                local_city.setText("武汉");
+            }
         }
     }
 

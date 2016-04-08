@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.wilben.enddesign.R;
-import com.wilben.enddesign.entity.User;
+import com.wilben.enddesign.entity.Designer;
 import com.wilben.enddesign.operation.SearchService;
 
 import java.io.InputStream;
@@ -21,30 +21,28 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 
-public class InfoActivity extends Activity {
+public class D_InfoActivity extends Activity {
 
     private ImageButton f_back;
-    private User user;
-    private TextView tv_username, tv_realname, tv_age, tv_sex, tv_edit;
+    private Designer designer;
+    private TextView tv_username, tv_realname, tv_age, tv_sex, tv_edit, tv_concept, tv_motto, tv_work, tv_area;
     private ImageView iv_avatar;
     private Bitmap bm = null;
     private Bundle bundle;
     private String username;
     private ProgressDialog p;
-    private String role;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.info);
+        setContentView(R.layout.d_info);
         bundle = this.getIntent().getExtras();
         username = bundle.getString("username");
-        role = bundle.getString("role");
         init();
         p = new ProgressDialog(this);
         p.setMessage("加载中...");
         p.show();
-        new getInfoAsyncTask().execute("Info", username, role);
+        new getInfoAsyncTask().execute("D_Info", username);
     }
 
     public void init() {
@@ -56,6 +54,10 @@ public class InfoActivity extends Activity {
         tv_sex = (TextView) findViewById(R.id.tv_sex);
         iv_avatar = (ImageView) findViewById(R.id.iv_avatar);
         tv_edit = (TextView) findViewById(R.id.tv_edit);
+        tv_concept = (TextView) findViewById(R.id.tv_concept);
+        tv_motto = (TextView) findViewById(R.id.tv_motto);
+        tv_work = (TextView) findViewById(R.id.tv_work);
+        tv_area = (TextView) findViewById(R.id.tv_area);
         f_back.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -70,9 +72,8 @@ public class InfoActivity extends Activity {
                 Intent intent = new Intent();
                 bundle = new Bundle();
                 bundle.putString("username", username);
-                bundle.putString("role", role);
                 intent.putExtras(bundle);
-                intent.setClass(InfoActivity.this, EditinfoActivity.class);
+                intent.setClass(D_InfoActivity.this, D_EditinfoActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -85,9 +86,9 @@ public class InfoActivity extends Activity {
         @Override
         protected Integer doInBackground(String... params) {
             try {
-                user = new User();
-                user = new SearchService().getInfo(params[0], params[1], params[2]);
-                String avatarUrl = user.getAvatar();
+                designer = new Designer();
+                designer = new SearchService().getD_Info(params[0], params[1]);
+                String avatarUrl = designer.getAvatar();
                 if (avatarUrl != null || !avatarUrl.equals("")) {
                     URL url = new URL(avatarUrl);
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -109,10 +110,14 @@ public class InfoActivity extends Activity {
             p.dismiss();
             if (bm != null)
                 iv_avatar.setImageBitmap(bm);
-            tv_username.setText(user.getUsername());
-            tv_realname.setText(user.getRealname());
-            tv_sex.setText(user.getSex());
-            tv_age.setText(user.getAge());
+            tv_username.setText(designer.getUsername());
+            tv_realname.setText(designer.getRealname());
+            tv_sex.setText(designer.getSex());
+            tv_age.setText(designer.getAge());
+            tv_concept.setText(designer.getConcept());
+            tv_motto.setText(designer.getMotto());
+            tv_work.setText(designer.getWork());
+            tv_area.setText(designer.getArea());
         }
     }
 

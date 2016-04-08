@@ -20,9 +20,10 @@ import android.widget.TextView;
 import com.wilben.enddesign.R;
 import com.wilben.enddesign.activity.AboutActivity;
 import com.wilben.enddesign.activity.ChangePwdActivity;
+import com.wilben.enddesign.activity.D_InfoActivity;
 import com.wilben.enddesign.activity.LoginActivity;
 import com.wilben.enddesign.activity.StyleActivity;
-import com.wilben.enddesign.activity.InfoActivity;
+import com.wilben.enddesign.activity.U_InfoActivity;
 import com.wilben.enddesign.util.HttpUtils;
 
 import java.io.InputStream;
@@ -110,10 +111,13 @@ public class MyFragment extends Fragment implements View.OnClickListener {
                                 }).show();
                 break;
             case R.id.rl_info:
-                intent.setClass(getActivity(), InfoActivity.class);
+                if (role.equals("0")) {
+                    intent.setClass(getActivity(), U_InfoActivity.class);
+                } else {
+                    intent.setClass(getActivity(), D_InfoActivity.class);
+                }
                 Bundle bundle = new Bundle();
                 bundle.putString("username", username);
-                bundle.putString("role", role);
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;
