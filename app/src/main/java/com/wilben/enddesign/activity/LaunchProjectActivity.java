@@ -78,7 +78,7 @@ public class LaunchProjectActivity extends Activity implements View.OnClickListe
                 public void run() {
                     Calendar c = Calendar.getInstance();
                     time = c.get(Calendar.YEAR) + "-" + c.get(Calendar.MONTH) + "-" + c.get(Calendar.DATE);
-                    Project project = new Project(null, title, time, user, 0, null, null, 0, username);
+                    Project project = new Project(null, title, time, user, 0, null, null, 0, username,"");
                     List<Project> list = new ArrayList<Project>();
                     list.add(project);
                     WriteJson writeJson = new WriteJson();

@@ -61,6 +61,7 @@ public class ListCaseAdapter extends BaseAdapter {
             holder.iv_avatar = (ImageView) convertView.findViewById(R.id.iv_avatar);
             holder.tv_username = (TextView) convertView.findViewById(R.id.tv_username);
             holder.tv_description = (TextView) convertView.findViewById(R.id.tv_description);
+            holder.tv_style = (TextView) convertView.findViewById(R.id.tv_style);
             holder.gridview = (NoScrollGridView) convertView.findViewById(R.id.gridview);
             convertView.setTag(holder);
         } else {
@@ -69,6 +70,7 @@ public class ListCaseAdapter extends BaseAdapter {
         Project itemEntity = items.get(position);
         holder.tv_username.setText(itemEntity.getUsername());
         holder.tv_description.setText(itemEntity.getDescription());
+        holder.tv_style.setText(itemEntity.getStyle());
         // 使用ImageLoader加载网络图片
         if (itemEntity.getImage().equals(""))
             itemEntity.setImage("1");
@@ -122,5 +124,6 @@ public class ListCaseAdapter extends BaseAdapter {
         private TextView tv_username;
         private TextView tv_description;
         private NoScrollGridView gridview;
+        private TextView tv_style;
     }
 }

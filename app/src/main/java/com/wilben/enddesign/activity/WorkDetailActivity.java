@@ -38,7 +38,7 @@ public class WorkDetailActivity extends Activity implements View.OnClickListener
     private ArrayList<String> imageList;
     private NoScrollGridAdapter adapter;
     private ProgressDialog p;
-    private TextView tv_title, tv_username, tv_time, tv_description, tv_state, tv_name, tv_update;
+    private TextView tv_title, tv_username, tv_time, tv_description, tv_state, tv_name, tv_update, tv_style;
     private ImageButton f_back;
     private Button btn_accept, btn_cancel, btn_confirm;
     private String result = "";
@@ -80,6 +80,7 @@ public class WorkDetailActivity extends Activity implements View.OnClickListener
         tv_description = (TextView) findViewById(R.id.tv_description);
         tv_state = (TextView) findViewById(R.id.tv_state);
         tv_name = (TextView) findViewById(R.id.tv_name);
+        tv_style = (TextView) findViewById(R.id.tv_style);
         f_back = (ImageButton) findViewById(R.id.ib_back);
         tv_update = (TextView) findViewById(R.id.tv_update);
         btn_accept = (Button) findViewById(R.id.btn_accept);
@@ -122,6 +123,7 @@ public class WorkDetailActivity extends Activity implements View.OnClickListener
                 bundle.putString("description", project.getDescription());
                 bundle.putString("position", position);
                 bundle.putString("username", project.getDesignername());
+                bundle.putString("style", project.getStyle());
                 intent.putExtras(bundle);
                 intent.setClass(WorkDetailActivity.this, UpdateProjectActivity.class);
                 startActivity(intent);
@@ -261,6 +263,7 @@ public class WorkDetailActivity extends Activity implements View.OnClickListener
             }
             tv_title.setText(project.getTitle());
             tv_time.setText(project.getTime());
+            tv_style.setText(project.getStyle());
             tv_description.setText(project.getDescription());
             switch (project.getState()) {
                 case 0:

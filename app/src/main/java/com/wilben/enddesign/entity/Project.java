@@ -12,9 +12,10 @@ public class Project {
     private String description;
     private ArrayList<String> imageUrls; // 九宫格图片的URL集合
     private int state;
+    private String style;
 
     public Project(String image, String title, String time, String username, int workId, String description
-            , ArrayList<String> imageUrls, int state, String designername) {
+            , ArrayList<String> imageUrls, int state, String designername, String style) {
         super();
         this.image = image;
         this.title = title;
@@ -25,10 +26,19 @@ public class Project {
         this.imageUrls = imageUrls;
         this.state = state;
         this.designername = designername;
+        this.style = style;
     }
 
     public Project() {
         super();
+    }
+
+    public String getStyle() {
+        return style;
+    }
+
+    public void setStyle(String style) {
+        this.style = style;
     }
 
     public String getDesignername() {

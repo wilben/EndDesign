@@ -50,8 +50,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="20dp"
         android:layout_marginRight="8dp"
+        android:layout_marginTop="20dp"
         android:background="@mipmap/cell_first"
         android:gravity="center_vertical">
 
@@ -76,13 +76,42 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_style"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:orientation="vertical"
+        android:clickable="true"
         android:background="@mipmap/cell_first"
         android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:gravity="left"
+            android:text="风格"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:gravity="right"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@mipmap/cell_first"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="80dp"
@@ -98,10 +127,10 @@
             android:id="@+id/et_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginLeft="50dp"
             android:layout_marginBottom="10dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
             android:background="@null"
             android:textColor="@color/black"
             android:textSize="15sp" />

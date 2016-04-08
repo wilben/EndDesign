@@ -26,6 +26,7 @@ public class SearchService {
             caseItem.setImage(jsonObject.getString("image"));
             caseItem.setUsername(jsonObject.getString("username"));
             caseItem.setDescription(jsonObject.getString("description"));
+            caseItem.setStyle(jsonObject.getString("style"));
             //解析照片路径
             ArrayList<String> listString = new ArrayList<String>();
             JSONArray jsonArray1 = jsonObject.getJSONArray("imageUrls");
@@ -136,6 +137,7 @@ public class SearchService {
         project.setTime(jsonObject.getString("time"));
         project.setDescription(jsonObject.getString("description"));
         project.setState(jsonObject.getInt("state"));
+        project.setStyle(jsonObject.getString("style"));
         //解析照片路径
         ArrayList<String> listString = new ArrayList<String>();
         JSONArray jsonArray1 = jsonObject.getJSONArray("imageUrls");

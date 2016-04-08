@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,9 +42,9 @@ public class UpdateProjectActivity extends Activity {
 
     private ImageButton f_back;
     private EditText et_title, et_description;
-    private TextView tv_upload;
+    private TextView tv_upload, tv_style;
     private Bundle bundle;
-    private String workId, title, description;
+    private String workId, title, description, style;
     private ProgressDialog p;
     private GridView gv_image; // 网格显示缩略图
     private final int IMAGE_OPEN = 1; // 打开图片标记
@@ -58,6 +59,9 @@ public class UpdateProjectActivity extends Activity {
     private String position;
     private String username;
     private Intent intent;
+    private LinearLayout ll_style;
+    private String[] items = new String[]{"现代简约", "地中海", "欧式"};
+    private int index;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +73,7 @@ public class UpdateProjectActivity extends Activity {
         username = bundle.getString("username");
         position = bundle.getString("position");
         description = bundle.getString("description");
+        style = bundle.getString("style");
         imageUrls = new ArrayList<>();
         init();
         p = new ProgressDialog(this);
@@ -148,9 +153,12 @@ public class UpdateProjectActivity extends Activity {
 
         et_title = (EditText) findViewById(R.id.et_title);
         et_description = (EditText) findViewById(R.id.et_description);
+        tv_style = (TextView) findViewById(R.id.tv_style);
+        ll_style = (LinearLayout) findViewById(R.id.ll_style);
         tv_upload = (TextView) findViewById(R.id.tv_upload);
         f_back = (ImageButton) findViewById(R.id.ib_back);
         et_title.setText(title);
+        tv_style.setText(style);
         et_description.setText(description);
         f_back.setOnClickListener(new View.OnClickListener() {
 
@@ -168,12 +176,36 @@ public class UpdateProjectActivity extends Activity {
                 finish();
             }
         });
+        ll_style.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(UpdateProjectActivity.this)
+                        .setTitle("风格")
+                        .setIcon(android.R.drawable.ic_dialog_info)
+                        .setSingleChoiceItems(items, 0, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                index = which;
+                            }
+                        })
+                        .setPositiveButton("确定",
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        tv_style.setText(items[index]);
+                                    }
+                                })
+                        .setNegativeButton("取消",
+                                null).show();
+            }
+        });
 
         tv_upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 title = et_title.getText().toString().trim();
                 description = et_description.getText().toString().trim();
+                style = tv_style.getText().toString().trim();
                 p.setMessage("上传中...");
                 if (title == null || title.length() <= 0) {
                     et_title.setError("项目标题不能为空");
@@ -194,7 +226,7 @@ public class UpdateProjectActivity extends Activity {
                                     }
                                 }
                             }
-                            Project project = new Project("", title, "", "", Integer.parseInt(workId), description, imageUrls, 0, "");
+                            Project project = new Project("", title, "", "", Integer.parseInt(workId), description, imageUrls, 0, "", style);
                             List<Project> list = new ArrayList<Project>();
                             list.add(project);
                             WriteJson writeJson = new WriteJson();

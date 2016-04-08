@@ -3,32 +3,77 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="5dp"
-    android:paddingTop="5dp" >
+    android:paddingTop="5dp">
 
     <ImageView
         android:id="@+id/iv_avatar"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        android:src="@mipmap/default_avatar" />
+
+    <TextView
+        android:id="@+id/tv_shejishi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="2dp"
+        android:layout_toRightOf="@id/iv_avatar"
+        android:text="设计师"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/tv_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
+        android:layout_alignTop="@+id/tv_shejishi"
+        android:layout_marginLeft="20dp"
+        android:layout_toEndOf="@+id/tv_shejishi"
+        android:layout_toRightOf="@+id/tv_shejishi"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_fengge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_username"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="6dp"
         android:layout_toRightOf="@id/iv_avatar"
-        android:text="爷，今天心情好！"
+        android:text="风格"
+        android:textSize="16sp" />
+
+
+    <TextView
+        android:id="@+id/tv_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tv_fengge"
+        android:layout_marginLeft="20dp"
+        android:layout_toEndOf="@+id/tv_fengge"
+        android:layout_toRightOf="@+id/tv_fengge"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_miaoshu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/iv_avatar"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="3dp"
+        android:text="描述"
         android:textSize="16sp" />
 
     <TextView
         android:id="@+id/tv_description"
-        android:layout_width="wrap_content"
+        android:layout_width="295dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_username"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="3dp"
-        android:layout_toRightOf="@id/iv_avatar"
-        android:text="今天又是雾霾！"
+        android:layout_alignTop="@+id/tv_miaoshu"
+        android:layout_marginLeft="12dp"
+        android:layout_toEndOf="@+id/tv_miaoshu"
+        android:layout_toRightOf="@+id/tv_miaoshu"
         android:textSize="16sp" />
 
     <com.wilben.enddesign.NoScrollGridView
@@ -36,7 +81,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_description"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="3dp"
         android:layout_toRightOf="@id/iv_avatar"
         android:columnWidth="70dp"
@@ -45,5 +90,4 @@
         android:numColumns="3"
         android:stretchMode="columnWidth"
         android:verticalSpacing="2.5dp" />
-
 </RelativeLayout>
