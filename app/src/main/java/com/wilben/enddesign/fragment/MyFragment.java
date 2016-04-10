@@ -168,6 +168,9 @@ public class MyFragment extends Fragment implements View.OnClickListener {
                                 //更新当前用户资料
                                 BmobIM.getInstance().updateUserInfo(new BmobIMUserInfo(user.getObjectId(), user.getUsername(), user.getAvatar()));
                                 Intent intent1 = new Intent();
+                                Bundle bundle1 = new Bundle();
+                                bundle1.putString("object", "0");
+                                intent1.putExtras(bundle1);
                                 intent1.setClass(getActivity(), Main2Activity.class);
                                 startActivity(intent1);
                             } else {
@@ -177,6 +180,9 @@ public class MyFragment extends Fragment implements View.OnClickListener {
                     });
                 } else {
                     intent.setClass(getActivity(), Main2Activity.class);
+                    bundle = new Bundle();
+                    bundle.putString("object", "0");
+                    intent.putExtras(bundle);
                     startActivity(intent);
                 }
                 break;

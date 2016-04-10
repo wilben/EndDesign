@@ -26,7 +26,9 @@ import cn.bmob.newim.bean.BmobIMConversation;
 import cn.bmob.newim.event.MessageEvent;
 import cn.bmob.newim.event.OfflineMessageEvent;
 
-/**会话界面
+/**
+ * 会话界面
+ *
  * @author :smile
  * @project:ConversationFragment
  * @date :2016-01-25-18:23
@@ -51,23 +53,28 @@ public class ConversationFragment extends ParentWithNaviFragment {
     }
 
     @Override
+    public Object left() {
+        return R.drawable.base_action_bar_back_bg_selector;
+    }
+
+    @Override
     public ParentWithNaviActivity.ToolBarListener setToolBarListener() {
         return new ParentWithNaviActivity.ToolBarListener() {
             @Override
             public void clickLeft() {
-
+                getActivity().finish();
             }
 
             @Override
             public void clickRight() {
-                startActivity(SearchUserActivity.class,null);
+                startActivity(SearchUserActivity.class, null);
             }
         };
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView =inflater.inflate(R.layout.fragment_conversation, container, false);
+        rootView = inflater.inflate(R.layout.fragment_conversation, container, false);
         initNaviView();
         ButterKnife.bind(this, rootView);
         adapter = new ConversationAdapter();
@@ -79,7 +86,7 @@ public class ConversationFragment extends ParentWithNaviFragment {
         return rootView;
     }
 
-    private void setListener(){
+    private void setListener() {
         rootView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
@@ -112,7 +119,7 @@ public class ConversationFragment extends ParentWithNaviFragment {
                 return true;
             }
         });
-}
+    }
 
     @Override
     public void onResume() {
@@ -134,31 +141,34 @@ public class ConversationFragment extends ParentWithNaviFragment {
     }
 
     /**
-      查询本地会话
+     * 查询本地会话
      */
-    public void query(){
+    public void query() {
         adapter.bindDatas(BmobIM.getInstance().loadAllConversation());
         adapter.notifyDataSetChanged();
         sw_refresh.setRefreshing(false);
     }
 
-    /**注册离线消息接收事件
+    /**
+     * 注册离线消息接收事件
+     *
      * @param event
      */
     @Subscribe
-    public void onEventMainThread(OfflineMessageEvent event){
+    public void onEventMainThread(OfflineMessageEvent event) {
         //重新刷新列表
         adapter.bindDatas(BmobIM.getInstance().loadAllConversation());
         adapter.notifyDataSetChanged();
     }
 
-    /**注册消息接收事件
-     * @param event
-     * 1、与用户相关的由开发者自己维护，SDK内部只存储用户信息
-     * 2、开发者获取到信息后，可调用SDK内部提供的方法更新会话
+    /**
+     * 注册消息接收事件
+     *
+     * @param event 1、与用户相关的由开发者自己维护，SDK内部只存储用户信息
+     *              2、开发者获取到信息后，可调用SDK内部提供的方法更新会话
      */
     @Subscribe
-    public void onEventMainThread(MessageEvent event){
+    public void onEventMainThread(MessageEvent event) {
         //重新获取本地消息并刷新列表
         adapter.bindDatas(BmobIM.getInstance().loadAllConversation());
         adapter.notifyDataSetChanged();

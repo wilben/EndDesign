@@ -12,14 +12,22 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.wilben.enddesign.R;
+import com.wilben.enddesign.entity.Bomb_User;
 import com.wilben.enddesign.entity.Designer;
+import com.wilben.enddesign.model.UserModel;
 import com.wilben.enddesign.operation.SearchService;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import cn.bmob.newim.BmobIM;
+import cn.bmob.newim.bean.BmobIMUserInfo;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.LogInListener;
 
 public class DesignerDetailActivity extends Activity {
 
@@ -32,7 +40,7 @@ public class DesignerDetailActivity extends Activity {
     private TextView tv_area;
     private String username;
     private String user;
-    private ImageView iv_avatar;
+    private ImageView iv_avatar, iv_chat;
     private Designer designer;
     private Bitmap bm = null;
     private ProgressDialog p;
@@ -65,6 +73,7 @@ public class DesignerDetailActivity extends Activity {
         tv_work = (TextView) findViewById(R.id.tv_work);
         tv_area = (TextView) findViewById(R.id.tv_area);
         iv_avatar = (ImageView) findViewById(R.id.iv_avatar);
+        iv_chat = (ImageView) findViewById(R.id.iv_chat);
         btn_work = (Button) findViewById(R.id.btn_work);
         btn_launch = (Button) findViewById(R.id.btn_launch);
         f_back = (ImageButton) findViewById(R.id.ib_back);
@@ -99,6 +108,40 @@ public class DesignerDetailActivity extends Activity {
                 intent = new Intent(DesignerDetailActivity.this, LaunchProjectActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
+            }
+        });
+        iv_chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bomb_User bomb_user = UserModel.getInstance().getCurrentUser();
+                if (bomb_user == null) {
+                    UserModel.getInstance().login(user, "123456", new LogInListener() {
+
+                        @Override
+                        public void done(Object o, BmobException e) {
+                            if (e == null) {
+                                Bomb_User user = (Bomb_User) o;
+                                //更新当前用户资料
+                                BmobIM.getInstance().updateUserInfo(new BmobIMUserInfo(user.getObjectId(), user.getUsername(), user.getAvatar()));
+                                Intent intent1 = new Intent(DesignerDetailActivity.this, Main2Activity.class);
+                                Bundle bundle1 = new Bundle();
+                                bundle1.putString("object", "1");
+                                bundle1.putString("name",username);
+                                intent1.putExtras(bundle1);
+                                startActivity(intent1);
+                            } else {
+                                Toast.makeText(DesignerDetailActivity.this, e.getMessage() + "(" + e.getErrorCode() + ")", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                } else {
+                    bundle = new Bundle();
+                    bundle.putString("object", "1");
+                    bundle.putString("name",username);
+                    intent = new Intent(DesignerDetailActivity.this, Main2Activity.class);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
             }
         });
     }
