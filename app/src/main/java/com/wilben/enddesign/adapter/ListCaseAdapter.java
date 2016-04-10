@@ -17,6 +17,7 @@ import com.wilben.enddesign.NoScrollGridView;
 import com.wilben.enddesign.R;
 import com.wilben.enddesign.activity.ImagePagerActivity;
 import com.wilben.enddesign.entity.Project;
+import com.wilben.enddesign.util.HttpUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,7 +82,7 @@ public class ListCaseAdapter extends BaseAdapter {
                 .cacheOnDisk(true) // sdcard缓存
                 .bitmapConfig(Config.RGB_565)// 设置最低配置
                 .build();//
-        ImageLoader.getInstance().displayImage(itemEntity.getImage(), holder.iv_avatar, options);
+        ImageLoader.getInstance().displayImage(HttpUtils.URLVAR+itemEntity.getImage(), holder.iv_avatar, options);
         final ArrayList<String> imageUrls = itemEntity.getImageUrls();
         if (imageUrls == null || imageUrls.size() == 0) { // 没有图片资源就隐藏GridView
             holder.gridview.setVisibility(View.GONE);

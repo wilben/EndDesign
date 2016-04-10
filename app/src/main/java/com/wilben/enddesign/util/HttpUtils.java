@@ -23,7 +23,7 @@ public class HttpUtils {
 
     }
 
-    private static final String URLVAR = "http://192.168.1.111:8080/Login/";
+    public static final String URLVAR = "http://192.168.1.111:8080/Login/";
 
     public String getData(String path) throws Exception {
 
@@ -85,7 +85,7 @@ public class HttpUtils {
             // TODO Auto-generated catch block
             e1.printStackTrace();
         }
-        return getData(path, jsonObject);
+        return URLVAR+getData(path, jsonObject);
     }
 
     private String getData(String path, JSONObject jsonObject) {

@@ -12,6 +12,7 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.wilben.enddesign.R;
 import com.wilben.enddesign.entity.Project;
+import com.wilben.enddesign.util.HttpUtils;
 
 import java.util.List;
 
@@ -66,7 +67,7 @@ public class WorkAdapter extends BaseAdapter {
                 .cacheOnDisk(true) // sdcard缓存
                 .bitmapConfig(Bitmap.Config.RGB_565)// 设置最低配置
                 .build();//
-        ImageLoader.getInstance().displayImage(workEntity.getImage(), holder.iv_image, options);
+        ImageLoader.getInstance().displayImage(HttpUtils.URLVAR+workEntity.getImage(), holder.iv_image, options);
         return convertView;
     }
 

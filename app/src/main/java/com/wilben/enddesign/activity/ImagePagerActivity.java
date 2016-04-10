@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.wilben.enddesign.HackyViewPager;
 import com.wilben.enddesign.R;
 import com.wilben.enddesign.fragment.ImageDetailFragment;
+import com.wilben.enddesign.util.HttpUtils;
 
 import java.util.ArrayList;
 
@@ -87,7 +88,7 @@ public class ImagePagerActivity extends FragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
-            String url = fileList.get(position);
+            String url = HttpUtils.URLVAR+fileList.get(position);
             return ImageDetailFragment.newInstance(url);
         }
 

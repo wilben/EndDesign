@@ -19,6 +19,7 @@ import com.wilben.enddesign.entity.Bomb_User;
 import com.wilben.enddesign.entity.Designer;
 import com.wilben.enddesign.model.UserModel;
 import com.wilben.enddesign.operation.SearchService;
+import com.wilben.enddesign.util.HttpUtils;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -154,7 +155,7 @@ public class DesignerDetailActivity extends Activity {
                 designer = new SearchService().getDesignerDetail(params[0], params[1]);
                 String avatar = designer.getAvatar();
                 if (avatar != null || !avatar.equals("")) {
-                    URL url = new URL(avatar);
+                    URL url = new URL(HttpUtils.URLVAR+avatar);
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setDoInput(true);
                     conn.connect();

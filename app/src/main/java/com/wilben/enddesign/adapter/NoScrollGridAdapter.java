@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.wilben.enddesign.R;
+import com.wilben.enddesign.util.HttpUtils;
 
 import java.util.ArrayList;
 
@@ -60,7 +61,7 @@ public class NoScrollGridAdapter extends BaseAdapter {
                 .cacheOnDisk(true)//
                 .bitmapConfig(Config.RGB_565)//
                 .build();
-        ImageLoader.getInstance().displayImage(imageUrls.get(position), imageView, options);
+        ImageLoader.getInstance().displayImage(HttpUtils.URLVAR+imageUrls.get(position), imageView, options);
         return view;
     }
 

@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.wilben.enddesign.R;
 import com.wilben.enddesign.entity.Designer;
 import com.wilben.enddesign.operation.SearchService;
+import com.wilben.enddesign.util.HttpUtils;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -90,7 +91,7 @@ public class D_InfoActivity extends Activity {
                 designer = new SearchService().getD_Info(params[0], params[1]);
                 String avatarUrl = designer.getAvatar();
                 if (avatarUrl != null || !avatarUrl.equals("")) {
-                    URL url = new URL(avatarUrl);
+                    URL url = new URL(HttpUtils.URLVAR+avatarUrl);
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setDoInput(true);
                     conn.connect();

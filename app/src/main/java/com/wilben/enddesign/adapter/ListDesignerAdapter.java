@@ -12,6 +12,7 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.wilben.enddesign.R;
 import com.wilben.enddesign.entity.Designer;
+import com.wilben.enddesign.util.HttpUtils;
 
 import java.util.List;
 
@@ -74,7 +75,7 @@ public class ListDesignerAdapter extends BaseAdapter {
                 .cacheOnDisk(true) // sdcard缓存
                 .bitmapConfig(Config.RGB_565)// 设置最低配置
                 .build();//
-        ImageLoader.getInstance().displayImage(designerEntity.getAvatar(), holder.iv_avatar, options);
+        ImageLoader.getInstance().displayImage(HttpUtils.URLVAR+designerEntity.getAvatar(), holder.iv_avatar, options);
         return convertView;
     }
 

@@ -186,7 +186,7 @@ public class U_EditinfoActivity extends Activity {
                 user = new SearchService().getU_Info(params[0], params[1]);
                 String avatarUrl = user.getAvatar();
                 if (avatarUrl != null || !avatarUrl.equals("")) {
-                    URL url = new URL(avatarUrl);
+                    URL url = new URL(HttpUtils.URLVAR+avatarUrl);
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setDoInput(true);
                     conn.connect();
