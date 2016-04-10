@@ -16,11 +16,18 @@ import android.widget.Toast;
 
 import com.wilben.enddesign.R;
 import com.wilben.enddesign.entity.User;
+import com.wilben.enddesign.model.UserModel;
+import com.wilben.enddesign.operation.FinishEvent;
 import com.wilben.enddesign.util.HttpUtils;
 import com.wilben.enddesign.util.WriteJson;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.LogInListener;
 
 public class RegisterActivity extends Activity {
     TextView tv_save;
@@ -207,6 +214,17 @@ public class RegisterActivity extends Activity {
             p.dismiss();
             if (msgobj.equals("t")) {
                 Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
+                UserModel.getInstance().register(username, "123456", "123456", new LogInListener() {
+                    @Override
+                    public void done(Object o, BmobException e) {
+                        if (e == null) {
+                            EventBus.getDefault().post(new FinishEvent());
+                        } else {
+                            Toast.makeText(RegisterActivity.this, e.getMessage() + "(" + e.getErrorCode() + ")", Toast.LENGTH_SHORT
+                            ).show();
+                        }
+                    }
+                });
                 finish();
             } else {
                 Toast.makeText(RegisterActivity.this, "注册失败", Toast.LENGTH_SHORT).show();

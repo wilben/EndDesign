@@ -5,8 +5,23 @@ import android.app.Application;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.orhanobut.logger.Logger;
+
+import cn.bmob.newim.BmobIM;
 
 public class MyApplication extends Application {
+
+    private static MyApplication INSTANCE;
+    public static MyApplication INSTANCE(){
+        return INSTANCE;
+    }
+    private void setInstance(MyApplication app) {
+        setMyApplication(app);
+    }
+    private static void setMyApplication(MyApplication a) {
+        MyApplication.INSTANCE = a;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -24,5 +39,13 @@ public class MyApplication extends Application {
                 .writeDebugLogs()//
                 .build();//
         ImageLoader.getInstance().init(config);
+
+        setInstance(this);
+        //初始化
+        Logger.init("smile");
+        //im初始化
+        BmobIM.init(this);
+        //注册消息接收器
+        BmobIM.registerDefaultMessageHandler(new DemoMessageHandler(this));
     }
 }

@@ -16,6 +16,9 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:name="com.wilben.enddesign.MyApplication"
@@ -65,6 +68,38 @@
         <activity android:name=".activity.AboutActivity"></activity>
         <activity android:name=".activity.UpdateProjectActivity"></activity>
         <activity android:name=".activity.SearchActivity"></activity>
+    <activity android:name=".activity.Main2Activity"></activity>
+    <activity
+        android:name=".activity.ChatActivity"
+        android:screenOrientation="portrait"
+        android:windowSoftInputMode="stateAlwaysHidden|adjustResize"></activity>
+        <activity android:name=".activity.SearchUserActivity"></activity>
+
+    <!-- bmobim start -->
+    <receiver android:name="cn.bmob.newim.core.ConnectChangeReceiver">
+        <intent-filter>
+            <action android:name="cn.bmob.action.RECONNECT" />
+            <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            <action android:name="android.intent.action.BOOT_COMPLETED" />
+            <action android:name="android.intent.action.USER_PRESENT" />
+        </intent-filter>
+    </receiver>
+
+    <service
+        android:name="cn.bmob.newim.core.service.BmobImService"
+        android:process=":bmobcore" />
+    <service android:name="cn.bmob.newim.core.service.ReConnectService" />
+    <service android:name="cn.bmob.newim.core.service.HeartBeatService" />
+
+    <!-- 设置bmob appkey -->
+    <meta-data
+        android:name="Bmob_APP_KEY"
+        android:value="84b758878da6626059272642dd7a76a1" />
+    <!--android:value="87ab0f9bee41bce86dfadd69af692873" -->
+
+    <!-- bmobim end -->
+
+
     </application>
 
 </manifest>
