@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="5dp"
-    android:paddingTop="5dp" >
+    android:paddingTop="5dp">
 
     <ImageView
         android:id="@+id/iv_avatar"
@@ -15,10 +15,11 @@
         android:id="@+id/tv_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
         android:layout_toRightOf="@id/iv_avatar"
         android:text="用户名"
+        android:textColor="@color/color_bottom_text_press"
         android:textSize="18sp" />
 
     <TextView
@@ -29,7 +30,8 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="5dp"
         android:layout_toRightOf="@id/iv_avatar"
-        android:text="所在地："
+        android:text="所在地 "
+        android:textColor="@color/guide_color"
         android:textSize="13sp" />
 
     <TextView
@@ -40,28 +42,31 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="3dp"
         android:layout_toRightOf="@id/iv_avatar"
-        android:text="风格："
+        android:text="风格 "
+        android:textColor="@color/guide_color"
         android:textSize="13sp" />
 
     <TextView
         android:id="@+id/tv_area"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="地域"
-        android:textSize="13sp"
         android:layout_alignTop="@+id/tv_local"
+        android:layout_toEndOf="@+id/tv_local"
         android:layout_toRightOf="@+id/tv_local"
-        android:layout_toEndOf="@+id/tv_local" />
+        android:text="地域"
+        android:textColor="@color/color_bottom_text_press"
+        android:textSize="13sp" />
 
     <TextView
         android:id="@+id/tv_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="style"
-        android:textSize="13sp"
         android:layout_alignTop="@+id/tv_fg"
+        android:layout_centerHorizontal="true"
         android:layout_toRightOf="@+id/tv_fg"
-        android:layout_centerHorizontal="true" />
+        android:text="style"
+        android:textColor="@color/color_bottom_text_press"
+        android:textSize="13sp" />
 
 
 </RelativeLayout>

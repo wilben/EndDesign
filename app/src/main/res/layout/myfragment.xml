@@ -24,13 +24,13 @@
 
         <ImageView
             android:id="@+id/iv_chat"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
             android:clickable="true"
-            android:src="@mipmap/ic_home_search" />
+            android:src="@mipmap/chat" />
 
 
     </RelativeLayout>
@@ -76,7 +76,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 android:text="用户名"
-                android:textColor="#545149"
+                android:textColor="#303F9F"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -229,6 +229,7 @@
         android:background="@drawable/exit"
         android:text="退出登录"
 
-        android:textSize="25dp" />
+        android:textColor="@color/base_color_text_white"
+        android:textSize="20sp" />
 
 </RelativeLayout>

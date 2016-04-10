@@ -55,7 +55,7 @@ public class SendTextHolder extends BaseViewHolder implements View.OnClickListen
     final BmobIMMessage message = (BmobIMMessage)o;
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
     final BmobIMUserInfo info = message.getBmobIMUserInfo();
-    ViewUtil.setAvatar(info != null ? info.getAvatar() : null, R.mipmap.head, iv_avatar);
+    ViewUtil.setAvatar(info != null ? info.getAvatar() : null, R.mipmap.cute_head, iv_avatar);
     String time = dateFormat.format(message.getCreateTime());
     String content = message.getContent();
     tv_message.setText(content);

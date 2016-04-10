@@ -33,7 +33,7 @@ public class SearchUserHolder extends BaseViewHolder {
     @Override
     public void bindData(Object o) {
         final Bomb_User user = (Bomb_User) o;
-        ViewUtil.setAvatar(user.getAvatar(), R.mipmap.head, avatar);
+        ViewUtil.setAvatar(user.getAvatar(), R.mipmap.cute_head, avatar);
         name.setText(user.getUsername());
         btn_chat.setOnClickListener(new View.OnClickListener() {
             @Override

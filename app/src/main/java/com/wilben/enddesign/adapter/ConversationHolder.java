@@ -50,7 +50,7 @@ public class ConversationHolder extends BaseViewHolder {
             tv_recent_time.setText(TimeUtil.getChatTime(false, lastMsg.getCreateTime()));
         }
         //会话图标
-        ViewUtil.setAvatar(conversation.getConversationIcon(), R.mipmap.head, iv_recent_avatar);
+        ViewUtil.setAvatar(conversation.getConversationIcon(), R.mipmap.cute_head, iv_recent_avatar);
         //会话标题
         tv_recent_name.setText(conversation.getConversationTitle());
         //查询指定未读消息数

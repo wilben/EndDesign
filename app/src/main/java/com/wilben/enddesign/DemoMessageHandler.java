@@ -2,10 +2,13 @@ package com.wilben.enddesign;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.widget.Toast;
 
 import com.orhanobut.logger.Logger;
+import com.wilben.enddesign.activity.LoginActivity;
 import com.wilben.enddesign.activity.Main2Activity;
+import com.wilben.enddesign.activity.WelcomeActivity;
 import com.wilben.enddesign.model.UserModel;
 import com.wilben.enddesign.model.i.UpdateCacheListener;
 
@@ -50,7 +53,7 @@ public class DemoMessageHandler extends BmobIMMessageHandler {
                     Toast.makeText(context, msg.getMsgType() + "," + msg.getContent(), Toast.LENGTH_SHORT).show();
                 }else{//SDK内部内部支持的消息类型
                     if (BmobNotificationManager.getInstance(context).isShowNotification()){//如果需要显示通知栏，SDK提供以下两种显示方式：
-                        Intent pendingIntent = new Intent(context, Main2Activity.class);
+                        Intent pendingIntent = new Intent(context, WelcomeActivity.class);
                         pendingIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                         //1、多个用户的多条消息合并成一条通知：有XX个联系人发来了XX条消息
                         BmobNotificationManager.getInstance(context).showNotification(event, pendingIntent);

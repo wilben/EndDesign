@@ -18,7 +18,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="11dp"
             android:scaleType="fitXY"
-            android:src="@mipmap/head" />
+            android:src="@mipmap/cute_head" />
 
         <TextView
             android:id="@+id/name"

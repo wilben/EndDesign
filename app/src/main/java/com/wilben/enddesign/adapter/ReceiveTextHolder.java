@@ -46,7 +46,7 @@ public class ReceiveTextHolder extends BaseViewHolder {
     String time = dateFormat.format(message.getCreateTime());
     tv_time.setText(time);
     final BmobIMUserInfo info = message.getBmobIMUserInfo();
-    ViewUtil.setAvatar(info != null ? info.getAvatar() : null, R.mipmap.head, iv_avatar);
+    ViewUtil.setAvatar(info != null ? info.getAvatar() : null, R.mipmap.cute_head, iv_avatar);
     String content =  message.getContent();
     tv_message.setText(content);
     iv_avatar.setOnClickListener(new View.OnClickListener() {

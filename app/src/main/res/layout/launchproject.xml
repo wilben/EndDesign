@@ -44,52 +44,60 @@
             android:textSize="18sp" />
     </RelativeLayout>
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center" />
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="42dip"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="10dp"
+        android:background="@mipmap/cell_first"
+        android:gravity="center_vertical">
 
         <TextView
-            android:layout_width="60dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="25dp"
+            android:gravity="left"
             android:text="设计师"
-            android:textSize="16dp" />
+            android:textColor="@color/black"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/tv_username"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="123"
-            android:textSize="16dp" />
+            android:layout_marginRight="30dp"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
+        android:layout_height="42dip"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@mipmap/cell_first"
+        android:gravity="center_vertical">
 
         <TextView
-            android:layout_width="60dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="25dp"
+            android:gravity="left"
             android:text="项目名称"
-            android:textSize="15dp" />
+            android:textColor="@color/black"
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/et_title"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginRight="30dp"
+            android:background="@null"
             android:hint=" (必填)"
-            android:textSize="16dp" />
+            android:textColor="@color/black"
+            android:textSize="15sp" />
     </LinearLayout>
 
 
