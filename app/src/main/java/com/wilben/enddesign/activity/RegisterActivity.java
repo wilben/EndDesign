@@ -142,7 +142,7 @@ public class RegisterActivity extends Activity {
                 return;
             }
 
-            if (username.length() < 6 || username.length() > 16) {
+            if (username.length() < 3 || username.length() > 16) {
                 etusername.setError("用户名长度不符");
                 etusername.requestFocus();
                 return;

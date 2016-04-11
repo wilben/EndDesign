@@ -7,7 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-    
+
     <style name="radio_btn">
         <item name="android:textSize">14sp</item>
         <item name="android:gravity">center_horizontal</item>
@@ -21,7 +21,7 @@
         <item name="android:paddingTop">4dp</item>
     </style>
 
-    <style name="style_smile" >
+    <style name="style_smile">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>
@@ -47,6 +47,7 @@
     <style name="style_text_black" parent="style_text">
         <item name="android:textColor">@color/base_color_text_black</item>
     </style>
+
     <style name="style_text_white" parent="style_text">
         <item name="android:textColor">@color/base_color_text_white</item>
     </style>
@@ -54,6 +55,7 @@
     <style name="style_text_gray_small" parent="style_text_small">
         <item name="android:textColor">@color/color_99</item>
     </style>
+
     <style name="style_text_white_small" parent="style_text_small">
         <item name="android:textColor">@color/base_color_text_white</item>
     </style>
@@ -86,6 +88,10 @@
         <item name="android:textColor">#818181</item>
         <item name="android:textSize">15sp</item>
         <item name="android:gravity">center</item>
+    </style>
+
+    <style name="CustomCheckboxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/checkbox_style</item>
     </style>
 
 </resources>

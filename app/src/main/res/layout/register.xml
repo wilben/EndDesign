@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="30dp"
             android:background="@null"
-            android:hint="6-16位数字或字母(必填)"
+            android:hint="3-16位数字或字母(必填)"
             android:inputType="text"
             android:digits="1234567890_qwertyuiopasdfghjklzxcvbnm"
             android:textColor="@color/black"
