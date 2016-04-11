@@ -26,6 +26,7 @@ import org.json.JSONException;
 import java.util.ArrayList;
 
 /**
+ * 项目详情界面
  * Created by wilben on 2016/4/2.
  */
 public class WorkDetailActivity extends Activity implements View.OnClickListener {

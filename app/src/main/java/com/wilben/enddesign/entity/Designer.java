@@ -1,5 +1,8 @@
 package com.wilben.enddesign.entity;
 
+/**
+ * 设计师--模型
+ */
 public class Designer {
 
     private String username;

@@ -17,6 +17,9 @@ import com.wilben.enddesign.operation.SearchService;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 经典案例界面
+ */
 public class U_CaseFragment extends Fragment {
 
     /**

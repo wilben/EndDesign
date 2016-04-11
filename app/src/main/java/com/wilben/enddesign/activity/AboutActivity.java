@@ -7,6 +7,9 @@ import android.widget.ImageButton;
 
 import com.wilben.enddesign.R;
 
+/**
+ * 关于装修设计界面
+ */
 
 public class AboutActivity extends Activity {
 

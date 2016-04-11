@@ -29,6 +29,9 @@ import java.util.List;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.LogInListener;
 
+/**
+ * 注册界面
+ */
 public class RegisterActivity extends Activity {
     TextView tv_save;
     EditText etusername;

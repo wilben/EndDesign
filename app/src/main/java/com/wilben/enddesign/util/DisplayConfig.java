@@ -7,7 +7,7 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 
 /**
- * @author :smile
+ * @author :
  * @project:DisplayConfig
  * @date :2016-01-25-09:19
  * 注：由于Picasso圆角处理不够完美，故舍弃

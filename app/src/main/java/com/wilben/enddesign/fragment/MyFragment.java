@@ -39,6 +39,9 @@ import cn.bmob.newim.bean.BmobIMUserInfo;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.LogInListener;
 
+/**
+ * 我的界面
+ */
 public class MyFragment extends Fragment implements View.OnClickListener {
 
     private Button btn_exit;

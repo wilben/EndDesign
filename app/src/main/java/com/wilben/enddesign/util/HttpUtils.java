@@ -18,6 +18,9 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.UUID;
 
+/**
+ * Http访问封装
+ */
 public class HttpUtils {
     public HttpUtils() {
 

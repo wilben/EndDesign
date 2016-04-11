@@ -37,7 +37,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-
+/**
+ * 修改项目信息界面
+ */
 public class UpdateProjectActivity extends Activity {
 
     private ImageButton f_back;
@@ -60,8 +62,8 @@ public class UpdateProjectActivity extends Activity {
     private String username;
     private Intent intent;
     private LinearLayout ll_style;
-    private String[] items = new String[]{"现代简约", "地中海", "欧式"};
     private int index;
+    private String[] items = new String[]{"欧式","地中海","田园","中式","现代简约","其他" };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -20,7 +20,9 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * 作品列表界面
+ */
 public class WorkActivity extends Activity {
 
     private String username;

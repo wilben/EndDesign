@@ -11,6 +11,9 @@ import com.wilben.enddesign.R;
 import com.wilben.enddesign.fragment.MyFragment;
 import com.wilben.enddesign.fragment.ProjectFragment;
 
+/**
+ * 设计师-主界面
+ */
 public class D_MainActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener {
 
     private RadioGroup radioGroup;

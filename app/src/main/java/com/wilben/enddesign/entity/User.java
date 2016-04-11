@@ -1,5 +1,8 @@
 package com.wilben.enddesign.entity;
 
+/**
+ * 用户--模型
+ */
 public class User {
 
     private String username;

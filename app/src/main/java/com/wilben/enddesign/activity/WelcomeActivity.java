@@ -8,7 +8,9 @@ import android.os.Message;
 
 import com.wilben.enddesign.R;
 
-
+/**
+ * 欢迎页
+ */
 public class WelcomeActivity extends Activity {
 
     @Override

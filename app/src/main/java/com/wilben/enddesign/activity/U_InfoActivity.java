@@ -21,7 +21,9 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-
+/**
+ * 用户--个人信息界面
+ */
 public class U_InfoActivity extends Activity {
 
     private ImageButton f_back;

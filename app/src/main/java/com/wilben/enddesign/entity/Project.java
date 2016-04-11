@@ -2,6 +2,9 @@ package com.wilben.enddesign.entity;
 
 import java.util.ArrayList;
 
+/**
+ * 项目--模型
+ */
 public class Project {
     private String image; // 封面
     private String title; // 标题

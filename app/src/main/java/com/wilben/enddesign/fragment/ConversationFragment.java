@@ -29,7 +29,7 @@ import cn.bmob.newim.event.OfflineMessageEvent;
 /**
  * 会话界面
  *
- * @author :smile
+ * @author :
  * @project:ConversationFragment
  * @date :2016-01-25-18:23
  */

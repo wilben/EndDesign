@@ -27,7 +27,7 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 
 /**
- * @author :smile
+ * @author :
  * @project:MainActivity
  * @date :2016-01-15-18:23
  */

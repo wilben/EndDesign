@@ -3,7 +3,7 @@ package com.wilben.enddesign.entity;
 import cn.bmob.v3.BmobUser;
 
 /**
- * @author :smile
+ * @author :
  * @project:User
  * @date :2016-01-22-18:11
  */

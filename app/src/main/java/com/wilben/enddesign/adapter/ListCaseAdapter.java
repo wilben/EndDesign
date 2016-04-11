@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 首页ListView的数据适配器
+ * 经典案例数据适配器
  *
  * @author Administrator
  */

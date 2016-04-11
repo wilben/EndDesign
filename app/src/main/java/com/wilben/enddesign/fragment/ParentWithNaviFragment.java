@@ -13,7 +13,7 @@ import com.wilben.enddesign.activity.ParentWithNaviActivity;
 /**
  * 封装了导航条的Fragment类均需继承该类
  *
- * @author :smile
+ * @author :
  * @project:ParentWithNaviFragment
  * @date :2015-08-18-14:19
  */

@@ -5,7 +5,7 @@ import android.content.Context;
 import com.wilben.enddesign.MyApplication;
 
 /**
- * @author :smile
+ * @author :
  * @project:BaseModel
  * @date :2016-01-23-10:37
  */

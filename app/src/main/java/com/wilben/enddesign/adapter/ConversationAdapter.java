@@ -9,7 +9,8 @@ import java.util.List;
 import cn.bmob.newim.bean.BmobIMConversation;
 
 /**
- * @author :smile
+ * 会话适配器
+ * @author :
  * @project:ConversationAdapter
  * @date :2016-01-22-14:18
  */

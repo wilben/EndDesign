@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 项目列表界面
  * Created by wilben on 2016/4/3.
  */
 public class MyProjectActivity extends Activity {

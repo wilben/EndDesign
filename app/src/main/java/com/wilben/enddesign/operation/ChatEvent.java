@@ -3,7 +3,7 @@ package com.wilben.enddesign.operation;
 import cn.bmob.newim.bean.BmobIMUserInfo;
 
 /**
- * @author :smile
+ * @author :
  * @project:ChatEvent
  * @date :2016-01-25-10:42
  */

@@ -21,6 +21,9 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/**
+ * 设计师--个人信息界面
+ */
 
 public class D_InfoActivity extends Activity {
 

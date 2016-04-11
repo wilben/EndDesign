@@ -14,6 +14,13 @@ import java.util.List;
 
 public class SearchService {
 
+    /**
+     * 查询经典案例列表
+     * @param path 路径
+     * @param caseList
+     * @return
+     * @throws Exception
+     */
     public List<Project> getCase(String path, List<Project> caseList) throws Exception {
         String s = new HttpUtils().getData(path);
 
@@ -42,6 +49,13 @@ public class SearchService {
         return caseList;
     }
 
+    /**
+     * 查询设计师列表
+     * @param path 路径
+     * @param designerList
+     * @return
+     * @throws Exception
+     */
     public List<Designer> getAllDesigner(String path, List<Designer> designerList) throws Exception {
         String s = new HttpUtils().getData(path);
         JSONObject jsonObject1 = new JSONObject(s);
@@ -59,6 +73,13 @@ public class SearchService {
         return designerList;
     }
 
+    /**
+     * 设计师--查询个人信息
+     * @param path 路径
+     * @param username 用户名
+     * @return
+     * @throws Exception
+     */
     public Designer getD_Info(String path, String username) throws Exception {
         String s = new HttpUtils().getInfo(path, username);
 
@@ -77,6 +98,13 @@ public class SearchService {
         return designer;
     }
 
+    /**
+     * 用户--查询个人信息
+     * @param path 路径
+     * @param username 用户名
+     * @return
+     * @throws Exception
+     */
     public User getU_Info(String path, String username) throws Exception {
         String s = new HttpUtils().getInfo(path, username);
 
@@ -91,6 +119,13 @@ public class SearchService {
         return user;
     }
 
+    /**
+     * 查询设计师详情
+     * @param path 路径
+     * @param username 设计师名
+     * @return
+     * @throws Exception
+     */
     public Designer getDesignerDetail(String path, String username) throws Exception {
         String s = new HttpUtils().getDesignerDetail(path, username);
 
@@ -108,6 +143,14 @@ public class SearchService {
         return designer;
     }
 
+    /**
+     * 查询作品列表
+     * @param path 路径
+     * @param username 设计师名
+     * @param listWork
+     * @return
+     * @throws JSONException
+     */
     public List<Project> getWorks(String path, String username, List<Project> listWork) throws JSONException {
         String s = new HttpUtils().getWorks(path, username);
         JSONObject jsonObject1 = new JSONObject(s);
@@ -125,6 +168,14 @@ public class SearchService {
         return listWork;
     }
 
+    /**
+     * 查询项目详情
+     * @param path 路径
+     * @param workId 项目Id
+     * @param state 项目状态
+     * @return
+     * @throws JSONException
+     */
     public Project getWorkDetail(String path, String workId, String state) throws JSONException {
         String s = new HttpUtils().getWorkDetail(path, workId, state);
         JSONObject jsonObject1 = new JSONObject(s);
@@ -150,6 +201,16 @@ public class SearchService {
         return project;
     }
 
+    /**
+     * 查询项目列表
+     * @param path 路径
+     * @param username 用户名
+     * @param position 项目状态
+     * @param role 角色
+     * @param projectList
+     * @return
+     * @throws JSONException
+     */
     public List<Project> getProject(String path, String username, String position, String role, List<Project> projectList) throws JSONException {
         String s = new HttpUtils().getProject(path, username, position, role);
         JSONObject jsonObject1 = new JSONObject(s);
@@ -170,6 +231,14 @@ public class SearchService {
         return projectList;
     }
 
+    /**
+     * 查询设计师
+     * @param path 路径
+     * @param content 查询内容
+     * @param designerList
+     * @return
+     * @throws JSONException
+     */
     public List<Designer> searchDesigner(String path, String content, List<Designer> designerList) throws JSONException {
         String s = new HttpUtils().getDesigner(path, content);
         JSONObject jsonObject1 = new JSONObject(s);

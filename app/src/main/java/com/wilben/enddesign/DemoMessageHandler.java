@@ -26,7 +26,7 @@ import cn.bmob.newim.notification.BmobNotificationManager;
 import cn.bmob.v3.exception.BmobException;
 
 /**消息接收器
- * @author smile
+ * @author
  * @project DemoMessageHandler
  * @date 2016-03-08-17:37
  */

@@ -33,6 +33,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 设计师--修改个人信息界面
+ */
 
 public class D_EditinfoActivity extends Activity {
 

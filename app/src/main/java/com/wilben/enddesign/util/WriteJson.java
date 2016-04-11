@@ -4,6 +4,9 @@ import com.google.gson.Gson;
 
 import java.util.List;
 
+/**
+ * 转为Json类型
+ */
 public class WriteJson {
 	/*
 	 * 通过引入gson jar包 写入 json 数据

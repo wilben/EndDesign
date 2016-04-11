@@ -9,7 +9,7 @@ import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 /**
- * @author :smile
+ * @author :
  * @project:ViewUtil
  * @date :2016-01-25-9:57
  */

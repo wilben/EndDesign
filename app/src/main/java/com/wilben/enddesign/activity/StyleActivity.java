@@ -17,7 +17,9 @@ import android.widget.Toast;
 import com.wilben.enddesign.R;
 import com.wilben.enddesign.util.HttpUtils;
 
-
+/**
+ * 我的风格界面
+ */
 public class StyleActivity extends Activity {
 
     private ImageButton f_back;
@@ -26,8 +28,8 @@ public class StyleActivity extends Activity {
     private String username;
     private ProgressDialog p;
     private RelativeLayout rl_style;
-    private boolean[] flags = new boolean[]{false, false, false};//初始复选情况
-    private String[] items = new String[]{"现代简约", "地中海", "欧式"};
+    private boolean[] flags = new boolean[]{false, false, false, false, false, false};//初始复选情况
+    private String[] items = new String[]{"欧式","地中海","田园","中式","现代简约","其他" };
     private String result = "";
     String style;
     String role;

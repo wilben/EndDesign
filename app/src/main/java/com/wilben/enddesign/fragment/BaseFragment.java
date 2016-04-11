@@ -14,7 +14,7 @@ import com.orhanobut.logger.Logger;
 /**
  * 基类
  *
- * @author :smile
+ * @author :
  * @project:BaseActivity
  * @date :2016-01-15-18:23
  */

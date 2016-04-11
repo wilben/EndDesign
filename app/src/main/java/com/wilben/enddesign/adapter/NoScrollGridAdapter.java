@@ -16,6 +16,9 @@ import com.wilben.enddesign.util.HttpUtils;
 
 import java.util.ArrayList;
 
+/**
+ * 格子图片适配器
+ */
 public class NoScrollGridAdapter extends BaseAdapter {
 
     /**

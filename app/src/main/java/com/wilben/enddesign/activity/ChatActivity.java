@@ -42,7 +42,7 @@ import cn.bmob.v3.exception.BmobException;
 /**
  * 聊天界面
  *
- * @author :smile
+ * @author :
  * @project:ChatActivity
  * @date :2016-01-25-18:23
  */

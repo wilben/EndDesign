@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author :smile
+ * 搜索好友列表适配器
+ * @author :
  * @project:SearchUserAdapter
  * @date :2016-01-22-14:18
  */

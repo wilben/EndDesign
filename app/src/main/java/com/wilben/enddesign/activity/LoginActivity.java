@@ -18,9 +18,9 @@ import android.widget.Toast;
 import com.wilben.enddesign.R;
 import com.wilben.enddesign.util.HttpUtils;
 
-//此为主activity的实现登录的。在android2.3以后，android规定了主activity不允许在主线程中做一些耗时较多的
-//操作，包括网络的操作，主要是减少应用程序停止响应的问题。下面注释掉的部分是网上找到的方法，加上之后就可以在主线程中
-//进行联网操作了，但是本人采用了线程的操作，未采用该方法
+/**
+ * 登录界面
+ */
 public class LoginActivity extends Activity {
     private Button login;
     private TextView tv_save;

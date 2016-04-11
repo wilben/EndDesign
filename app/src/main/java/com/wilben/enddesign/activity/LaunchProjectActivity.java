@@ -21,6 +21,7 @@ import java.util.Calendar;
 import java.util.List;
 
 /**
+ * 发起项目界面
  * Created by wilben on 2016/4/3.
  */
 public class LaunchProjectActivity extends Activity implements View.OnClickListener {

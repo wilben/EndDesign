@@ -30,6 +30,9 @@ import cn.bmob.newim.bean.BmobIMUserInfo;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.LogInListener;
 
+/**
+ * 设计师详情界面
+ */
 public class DesignerDetailActivity extends Activity {
 
     private TextView tv_username;

@@ -22,7 +22,7 @@ import cn.bmob.v3.listener.LogInListener;
 import cn.bmob.v3.listener.SaveListener;
 
 /**
- * @author :smile
+ * @author :
  * @project:UserModel
  * @date :2016-01-22-18:09
  */

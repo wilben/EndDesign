@@ -14,6 +14,9 @@ import com.wilben.enddesign.R;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 图片适配器
+ */
 public class ImageAdapter extends BaseAdapter {
 
 

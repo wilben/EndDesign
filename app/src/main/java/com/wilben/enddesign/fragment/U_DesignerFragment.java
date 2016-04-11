@@ -27,6 +27,9 @@ import com.wilben.enddesign.operation.SearchService;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 设计师列表界面
+ */
 public class U_DesignerFragment extends Fragment {
 
     /**

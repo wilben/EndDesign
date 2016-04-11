@@ -33,7 +33,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * 用户--修改个人信息界面
+ */
 public class U_EditinfoActivity extends Activity {
 
     private ImageButton f_back;

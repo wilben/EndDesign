@@ -14,6 +14,9 @@ import com.wilben.enddesign.R;
 import com.wilben.enddesign.activity.MyProjectActivity;
 import com.wilben.enddesign.adapter.ImageAdapter;
 
+/**
+ * 项目界面
+ */
 public class ProjectFragment extends Fragment {
 
     private String username;

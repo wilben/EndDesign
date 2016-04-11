@@ -13,7 +13,8 @@ import cn.bmob.newim.bean.BmobIMMessage;
 import cn.bmob.v3.BmobUser;
 
 /**
- * @author :smile
+ * 聊天适配器
+ * @author :
  * @project:ChatAdapter
  * @date :2016-01-22-14:18
  */

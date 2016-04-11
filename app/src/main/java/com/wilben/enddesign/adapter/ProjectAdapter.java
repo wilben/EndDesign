@@ -17,9 +17,9 @@ import com.wilben.enddesign.util.HttpUtils;
 import java.util.List;
 
 /**
- * 首页ListView的数据适配器
+ * 项目列表数据适配器
  *
- * @author Administrator
+ * @author
  */
 public class ProjectAdapter extends BaseAdapter {
 

@@ -14,6 +14,9 @@ import android.widget.Toast;
 import com.wilben.enddesign.R;
 import com.wilben.enddesign.util.HttpUtils;
 
+/**
+ * 修改密码界面
+ */
 
 public class ChangePwdActivity extends Activity {
 
@@ -85,6 +88,7 @@ public class ChangePwdActivity extends Activity {
 
 
     }
+
 
     class changepwdAsyncTask extends AsyncTask<String, Void, String> {
 
