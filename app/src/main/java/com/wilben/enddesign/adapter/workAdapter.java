@@ -16,6 +16,9 @@ import com.wilben.enddesign.util.HttpUtils;
 
 import java.util.List;
 
+/**
+ * 作品列表适配器
+ */
 public class WorkAdapter extends BaseAdapter {
 
     private List<Project> list;

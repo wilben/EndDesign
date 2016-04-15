@@ -70,7 +70,7 @@ public class WorkDetailActivity extends Activity implements View.OnClickListener
             }
         });
         p.show();
-        new WorkDetailAsyncTask().execute("WorkDetail", workId, state);
+        new WorkDetailAsyncTask().execute("ProjectDetail", workId, state);
     }
 
     private void init() {
